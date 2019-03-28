@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Mail\ContactMail;
+use App\Mail\ApplyForMembershipMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,5 +78,29 @@ Route::group(['prefix'=> 'v1'], function() {
     });
     /**
      * End Investigation Routes
+     */
+
+    /**
+     * Mail Routes
+     */
+    Route::group(['prefix' => 'mail'], function() {
+        Route::post('/contact', function(Request $request) {
+            Mail::send(new ContactMail($request));
+            return response()->json([
+                'success' => 1
+            ]);
+            
+            //return (new ContactMail($request))->render();
+        });
+        Route::post('/apply-for-membership', function(Request $request) {
+            Mail::send(new ApplyForMembershipMail($request));
+            return response()->json([
+                'success' => 1
+            ]);
+            //return (new ApplyForMembershipMail($request))->render();
+        });
+    });
+    /**
+     * End Mail Routes
      */
 });

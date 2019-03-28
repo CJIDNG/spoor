@@ -61,11 +61,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <!--<li class="dropdown-header">Dropdown header</li>-->
-                            <router-link class="dropdown-item" to="#">
+                            <router-link class="dropdown-item" to="/be-a-member">
                                 Be a Member
-                            </router-link>
-                            <router-link class="dropdown-item" to="#">
-                                Trainings
                             </router-link>
                         </ul>
                     </div>
@@ -84,9 +81,6 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <!--<li class="dropdown-header">Dropdown header</li>-->
-                            <router-link class="dropdown-item" to="/profile">
-                                Profile
-                            </router-link>
                             <router-link to="/admin" class="dropdown-item">
                                 Admin
                             </router-link>

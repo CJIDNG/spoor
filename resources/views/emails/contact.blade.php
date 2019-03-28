@@ -194,17 +194,17 @@
 		        <!-- Email Header : BEGIN -->
 	            <tr>
 	                <td style="padding: 20px 0; text-align: center">
-	                    <img src="{{ asset('/img/new_logo.png') }}" width="100" height="100" alt="alt_text" border="0" style="height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555;">
+	                    <img src="{{ asset('/img/spoor_black.png') }}" alt="alt_text" border="0" style="height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555;">
 	                </td>
 	            </tr>
 		        <!-- Email Header : END -->
 
                 <!-- Hero Image, Flush : BEGIN -->
-                <tr>
+                <!--<tr>
                     <td style="background-color: #ffffff;">
                         <img src="{{ asset('/img/sections/ben-white.jpg') }}" width="600" height="" alt="alt_text" border="0" style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555; margin: auto; display: block;" class="g-img">
                     </td>
-                </tr>
+                </tr>-->
                 <!-- Hero Image, Flush : END -->
 
                 <!-- 1 Column Text + Button : BEGIN -->
@@ -258,7 +258,7 @@
                     <td style="padding: 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #888888;">
                         <webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;">View as a Web Page</webversion>
                         <br><br>
-						Spoor<br><span class="unstyle-auto-detected-links">Abuja, Nigeria</span>
+						SpoorNG<br><span class="unstyle-auto-detected-links">Abuja, Nigeria</span>
                         <br><br>
                         <unsubscribe style="color: #888888; text-decoration: underline;">unsubscribe</unsubscribe>
                     </td>

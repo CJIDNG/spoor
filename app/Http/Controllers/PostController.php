@@ -134,7 +134,7 @@ class PostController extends Controller
 
         if($post->save()) {
             //update attached investigations
-            $post->investigations()->sync(explode(',',$request->input('investigations')));
+            //$post->investigations()->sync(explode(',',$request->input('investigations')));
 
             $success = 1;
         } else {

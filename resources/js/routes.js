@@ -151,6 +151,15 @@ const router = new VueRouter({
             ]
         },
         {
+            path: '/be-a-member',
+            name: 'Be A Member',
+            components: {
+                default: Vue.component('BeMemberComponent', require('./pages/BeMember.vue').default),
+                header: Vue.component('HeaderComponent', HeaderComponent),
+                footer: Vue.component('FooterComponent', FooterComponent)
+            }
+        },
+        {
             path: '/contact',
             name: 'Contact',
             components: {

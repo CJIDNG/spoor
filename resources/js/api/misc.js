@@ -19,17 +19,34 @@ export default {
             message
         });
     },
-    sendTellYourStoryMail: function(
-        full_name,
-        phone,
+    
+    applyForMembership: function(
+        last_name,
+        first_name,
+        birth_date,
+        birth_city,
+        nationality,
         email,
-        content
+        phone_number,
+        publications,
+        experience_years,
+        experience_subjects,
+        residence_city,
+        references
     ) {
-        return axios.post(CONFIG.API_URL + '/mail/tell-your-story', {
-            full_name,
-            phone,
+        return axios.post(CONFIG.API_URL + '/mail/apply-for-membership', {
+            last_name,
+            first_name,
+            birth_date,
+            birth_city,
+            nationality,
             email,
-            content
-        })
+            phone_number,
+            publications,
+            experience_years,
+            experience_subjects,
+            residence_city,
+            references
+        });
     }
 }

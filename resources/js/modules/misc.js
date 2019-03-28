@@ -11,8 +11,8 @@ export const misc = {
     state: {
         sendContactMailLoadStatus: 0,
         sendContactMailResponse: {},
-        sendTellYourStoryMailLoadStatus: 0,
-        sendTellYourStoryMailResponse: {}
+        sendApplyForMembershipMailLoadStatus: 0,
+        sendApplyForMembershipMailResponse: {}
     },
     actions: {
         sendContactMail({commit}, data) {
@@ -32,20 +32,28 @@ export const misc = {
                 commit('setSendContactMailResponse', {});
             });
         },
-        sendTellYourStoryMail({commit}, data) {
-            commit('setSendTellYourStoryMailLoadStatus', 1);
+        sendApplyForMembershipMail({commit}, data) {
+            commit('setSendApplyForMembershipMailLoadStatus', 1);
 
-            MiscAPI.sendTellYourStoryMail(
-                data.full_name,
-                data.phone,
+            MiscAPI.applyForMembership(
+                data.last_name,
+                data.first_name,
+                data.birth_date,
+                data.birth_city,
+                data.nationality,
                 data.email,
-                data.content
+                data.phone_number,
+                data.publications,
+                data.experience_years,
+                data.experience_subjects,
+                data.residence_city,
+                data.references
             ).then(function(response) {
-                commit('setSendTellYourStoryMailLoadStatus', 2);
-                commit('setSendTellYourStoryMailResponse', response);
+                commit('setSendApplyForMembershipMailLoadStatus', 2);
+                commit('setSendApplyForMembershipMailResponse', response);
             }).catch(function() {
-                commit('setSendTellYourStoryMailLoadStatus', 3);
-                commit('setSendTellYourStoryMailResponse', {});
+                commit('setSendApplyForMembershipMailLoadStatus', 3);
+                commit('setSendApplyForMembershipMailResponse', {});
             });
         }
     },
@@ -56,11 +64,11 @@ export const misc = {
         setSendContactMailResponse(state, response) {
             state.sendContactMailResponse = response;
         },
-        setSendTellYourStoryMailLoadStatus(state, status) {
-            state.sendTellYourStoryMailLoadStatus = status;
+        setSendApplyForMembershipMailLoadStatus(state, status) {
+            state.sendApplyForMembershipMailLoadStatus = status;
         },
-        setSendTellYourStoryMailResponse(state, response) {
-            state.sendTellYourStoryMailResponse = response;
+        setSendApplyForMembershipMailResponse(state, response) {
+            state.sendApplyForMembershipMailResponse = response;
         }
     },
     getters: {
@@ -70,11 +78,11 @@ export const misc = {
         getSendContactMailResponse(state) {
             return state.sendContactMailResponse;
         },
-        getSendTellYourStoryMailLoadStatus(state) {
-            return state.sendTellYourStoryMailLoadStatus;
+        getSendApplyForMembershipMailLoadStatus(state) {
+            return state.sendApplyForMembershipMailLoadStatus;
         },
-        getSendTellYourStoryMailResponse(state) {
-            return state.sendTellYourStoryMailResponse;
+        getSendApplyForMembershipMailResponse(state) {
+            return state.sendApplyForMembershipMailResponse;
         }
     }
 }
