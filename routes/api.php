@@ -81,6 +81,20 @@ Route::group(['prefix'=> 'v1'], function() {
      */
 
     /**
+     * Member Routes
+     */
+    Route::group(['prefix' => 'member'], function() {
+        Route::get('/', 'MemberController@index');
+        Route::post('/', 'MemberController@store')->middleware('auth:api');
+        Route::get('/view/{id}', 'MemberController@show');
+        Route::post('/{id}', 'MemberController@update')->middleware('auth:api');
+        Route::delete('/', 'MemberController@destroy')->middleware('auth:api');
+    });
+    /**
+     * End Member Routes
+     */
+
+    /**
      * Mail Routes
      */
     Route::group(['prefix' => 'mail'], function() {

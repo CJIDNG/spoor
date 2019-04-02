@@ -151,6 +151,53 @@ const router = new VueRouter({
             ]
         },
         {
+            path: '/member',
+            components: {
+                default: Vue.component('MemberComponent', require('./pages/Member.vue').default),
+                header: Vue.component('HeaderComponent', HeaderComponent),
+                footer: Vue.component('FooterComponent', FooterComponent)
+            },
+            children: [
+                {
+                    path: '',
+                    name: 'Member',
+                    component: Vue.component('BrowseMembers', require('./components/member/Browse.vue').default)
+                },
+                {
+                    path: 'edit/:memberId',
+                    name: 'Edit Member',
+                    component: Vue.component(
+                        'EditMember', 
+                        require('./components/member/Update.vue').default
+                    ),
+                    beforeEnter: requireAuth,
+                    meta: {
+                        permitted: ['Super-admin', 'Admin']
+                    }
+                },
+                {
+                    path: 'view/:memberId',
+                    name: 'View Member',
+                    component: Vue.component(
+                        'ViewMember',
+                        require('./components/member/View.vue').default
+                    )
+                },
+                {
+                    path: 'add',
+                    name: 'Add Member',
+                    component: Vue.component(
+                        'AddMember', 
+                        require('./components/member/Add.vue').default
+                    ),
+                    beforeEnter: requireAuth,
+                    meta: {
+                        permitted: ['Super-admin','Admin']
+                    }
+                }
+            ]
+        },
+        {
             path: '/be-a-member',
             name: 'Be A Member',
             components: {

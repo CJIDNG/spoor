@@ -19,13 +19,13 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <router-link class="nav-link" to="/investigation">
-                            <i class="tim-icons icon-paper"></i>
+                            <i class="fa fa-search"></i>
                             Investigations
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/blog">
-                            <i class="tim-icons icon-paper"></i>
+                            <i class="fa fa-th"></i>
                             Blog
                         </router-link>
                     </li>
@@ -33,30 +33,7 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
-                            <i class="tim-icons icon-single-02"></i>
-                            Focus Area
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <!--<li class="dropdown-header">Dropdown header</li>-->
-                            <router-link class="dropdown-item" to="#">
-                                Organised Crime
-                            </router-link>
-                            <router-link class="dropdown-item" to="#">
-                                Corruption
-                            </router-link>
-                            <router-link class="dropdown-item" to="#">
-                                Human Rights Violations
-                            </router-link>
-                            <router-link class="dropdown-item" to="#">
-                                Corruptions
-                            </router-link>
-                        </ul>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
-                            href="#pk" role="button" aria-haspopup="true" 
-                            aria-expanded="false">
-                            <i class="tim-icons icon-single-02"></i>
+                            <i class="fa fa-exclamation-triangle"></i>
                             Get Involved
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -67,8 +44,14 @@
                         </ul>
                     </div>
                     <li class="nav-item">
+                        <router-link class="nav-link" to="/member">
+                            <i class="fa fa-users"></i>
+                            Members
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link" to="/contact">
-                            <i class="tim-icons icon-email-85"></i>
+                            <i class="fa fa-address-book"></i>
                             Contact
                         </router-link>
                     </li>
