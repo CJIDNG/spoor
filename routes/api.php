@@ -31,6 +31,17 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function() {
      * End User Routes
      */
 
+    /**
+     * Config Routes
+     */
+    Route::group(['prefix' => 'config'], function() {
+        Route::get('/', 'ConfigController@index');
+        Route::post('/', 'ConfigController@update');
+    });
+    /**
+     * End Config Routes
+     */
+
     Route::put(
       '/state',
       'StateController@update'

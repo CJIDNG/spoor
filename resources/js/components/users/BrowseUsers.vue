@@ -59,7 +59,7 @@
 
             <div v-if="userLoadStatus == 2 && user != {}" id="action-btn">
                 <router-link class="btn btn-success btn-round btn-just-icon btn-lg" 
-                    :to="'/users/add'">
+                    :to="'/admin/users/add'">
                     <i class="fa fa-plus"></i>
                 </router-link>
             </div>
@@ -100,7 +100,6 @@
                                 <th role="columnheader">Name</th>
                                 <th role="columnheader">Email</th>
                                 <th role="columnheader">Roles</th>
-                                <th role="columnheader">Status</th>
                                 <th role="columnheader">Action</th>
                             </tr>
                         </thead> 
@@ -116,12 +115,9 @@
                                 <td role="cell">
                                     {{ user.roles[0] }}
                                 </td>
-                                <td>
-                                    {{ user.active_label }}
-                                </td>
                                 <td class="td-actions">
                                     <router-link 
-                                        :to="'/users/edit/'+user.id" 
+                                        :to="'/admin/users/edit/'+user.id" 
                                         rel="tooltip" class="btn btn-success">
                                         <i class="fa fa-edit"></i>
                                     </router-link>

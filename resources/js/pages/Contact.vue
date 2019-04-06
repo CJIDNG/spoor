@@ -14,18 +14,18 @@
                     <h3 class="title">
                         <small>Find us on social networks</small>
                     </h3>
-                    <button class="btn btn-just-icon btn-twitter">
+                    <a :href="config.twitter_url" class="btn btn-just-icon btn-twitter">
                         <i class="fa fa-twitter"></i>
-                    </button>
-                    <button class="btn btn-just-icon btn-facebook">
+                    </a>
+                    <a :href="config.facebook_url" class="btn btn-just-icon btn-facebook">
                         <i class="fa fa-facebook"></i>
-                    </button>
-                    <button class="btn btn-just-icon btn-instagram">
+                    </a>
+                    <a :href="config.instagram_url" class="btn btn-just-icon btn-instagram">
                         <i class="fa fa-instagram"></i>
-                    </button>
-                    <button class="btn btn-just-icon btn-youtube">
-                        <i class="fa fa-youtube"></i>
-                    </button>
+                    </a>
+                    <a :href="config.linkedin_url" class="btn btn-just-icon btn-linkedin">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -119,6 +119,7 @@
             
         },
         created() {
+            this.$store.dispatch('loadConfig');
         },
         computed: {
             sendContactMailLoadStatus() {
@@ -126,6 +127,12 @@
             },
             sendContactMailResponse() {
                 return this.$store.getters.getSendContactMailResponse;
+            },
+            config() {
+                return this.$store.getters.getConfig;
+            },
+            configLoadStatus() {
+                return this.$store.getters.getConfigLoadStatus;
             }
         },
         watch: {

@@ -11,7 +11,7 @@
                         New Member
                     </h1>
                     <hr>
-                    <form v-show="show_form" action="">
+                    <form action="">
                         <div class="form-group">
                             <label for="">
                                 full name
@@ -91,9 +91,6 @@
                             Add
                         </button>
                     </form>
-                    <div v-show="!show_form" class="alert alert-success" role="alert">
-                        member added successfully!
-                    </div>
                 </div>
             </div>
         </div>
@@ -144,11 +141,10 @@
         },
         created() {
             this.$store.dispatch('getAuthUser');
-            this.bioEditor = HELPERS.initQuillEditor('bio');
             //this.$store.commit('setAddMemberLoadStatus', 0);
         },
         mounted() {
-
+            this.bioEditor = HELPERS.initQuillEditor('bio');
         },
         computed: {
             user() { 
@@ -172,6 +168,8 @@
                         message: 'member Added Successfully',
                         type: 'success'
                     });
+
+                    this.$router.push('/member');
                 } else if(val == 3 || this.addMemberResponse.success == 0) {
                     this.$message({
                         title: 'Warning',

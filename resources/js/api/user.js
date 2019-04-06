@@ -59,15 +59,13 @@ export default {
         id,
         name,
         email,
-        role_id,
-        active
+        role_id
     ) {
         return axios.put( CONFIG.API_URL + '/user', {
             id: id,
             name: name,
             email: email,
-            role_id: role_id,
-            active: active
+            role_id: role_id
         });
     },
 

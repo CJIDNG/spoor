@@ -7,21 +7,60 @@
 
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto">
-                    <h1 class="title text-center">
-                        Update Investigation
+                    <h1 class="full_name text-center">
+                        Update Member
                     </h1>
                     <hr>
                     <form action="">
                         <div class="form-group">
                             <label for="">
-                                title
+                                full name
                                 <sup>
-                                    <i class="fa fa-asterisk small" style="color:red"></i>
+                                    (required)
                                 </sup>
                             </label>
-                            <input type="text" class="form-control" v-model="buffer_investigation.title" />
-                            <small v-show="!validations.title.is_valid" class="form-text text-muted text-danger">
-                                {{ validations.title.text }}
+                            <input type="text" class="form-control" v-model="buffer_member.full_name" />
+                            <small v-show="!validations.full_name.is_valid" 
+                                class="form-text text-muted text-danger">
+                                {{ validations.full_name.text }}
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="">
+                                country
+                                <sup>
+                                    (required)
+                                </sup>
+                            </label>
+                            <input type="text" class="form-control" v-model="buffer_member.country" />
+                            <small v-show="!validations.country.is_valid" 
+                                class="form-text text-muted text-danger">
+                                {{ validations.country.text }}
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="">
+                                designation
+                                <sup>
+                                    (required)
+                                </sup>
+                            </label>
+                            <input type="text" class="form-control" v-model="buffer_member.designation" />
+                            <small v-show="!validations.designation.is_valid" 
+                                class="form-text text-muted text-danger">
+                                {{ validations.designation.text }}
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="">
+                                bio
+                                <sup>
+                                    (required)
+                                </sup>
+                            </label>
+                            <div id="bio"></div>
+                            <small v-show="!validations.bio.is_valid" class="form-text text-muted text-danger">
+                                {{ validations.bio.text }}
                             </small>
                         </div>
                         <div class="form-group">
@@ -47,21 +86,9 @@
                                 </div>
                             </el-upload>
                         </div>
-                        <div class="form-group">
-                            <label for="">
-                                tags(seperated by commas)
-                                <sup>
-                                    <i class="fa fa-asterisk small" style="color:red"></i>
-                                </sup>
-                            </label>
-                            <input type="text" class="form-control" v-model="buffer_investigation.tags" />
-                            <small v-show="!validations.tags.is_valid" class="form-text text-muted text-danger">
-                                {{ validations.tags.text }}
-                            </small>
-                        </div>
-                        <button v-loading="updateInvestigationLoadStatus == 1" @click="updateInvestigation(buffer_investigation)" type="button" 
+                        <button v-loading="updateMemberLoadStatus == 1" @click="updateMember(member)" type="button" 
                             class="btn btn-success">
-                            Update
+                            Add
                         </button>
                     </form>
                 </div>
@@ -70,21 +97,26 @@
     </div>
 </template>
 <script>
+    import { HELPERS } from '../../helpers.js';
+
     export default {
         data() {
             return {
-                buffer_investigation: {
+                buffer_member: {
                     id: '',
-                    title: '',
+                    full_name: '',
                     thumbnail: '',
-                    tags: ''
+                    country: '',
+                    designation: '',
+                    bio: ''
                 },
+                bioEditor: null,
                 validations: {
                     id: {
                         is_valid: true,
                         text: ''
                     },
-                    title: {
+                    full_name: {
                         is_valid: true,
                         text: ''
                     },
@@ -92,7 +124,15 @@
                         is_valid: true,
                         text: ''
                     },
-                    tags: {
+                    country: {
+                        is_valid: true,
+                        text: ''
+                    },
+                    designation: {
+                        is_valid: true,
+                        text: ''
+                    },
+                    bio: {
                         is_valid: true,
                         text: ''
                     }
@@ -105,12 +145,12 @@
         },
         created() {
             this.$store.dispatch('getAuthUser');
-            this.$store.dispatch('loadInvestigation', {
-                id: this.$route.params.investigationId
+            this.$store.dispatch('loadMember', {
+                id: this.$route.params.memberId
             });
         },
         mounted() {
-
+            this.bioEditor = HELPERS.initQuillEditor('bio');
         },
         computed: {
             user() { 
@@ -119,38 +159,40 @@
             userLoadStatus() {
                 return this.$store.getters.getUserLoadStatus;
             },
-            investigation() {
-                return this.$store.getters.getInvestigation;
+            member() {
+                return this.$store.getters.getMember;
             },
-            investigationLoadStatus() {
-                return this.$store.getters.getInvestigationLoadStatus;
+            memberLoadStatus() {
+                return this.$store.getters.getMemberLoadStatus;
             },
-            updateInvestigationLoadStatus() {
-                return this.$store.getters.getUpdateInvestigationLoadStatus;
+            updateMemberLoadStatus() {
+                return this.$store.getters.getUpdateMemberLoadStatus;
             },
-            updateInvestigationResponse() {
-                return this.$store.getters.getUpdateInvestigationResponse;
+            updateMemberResponse() {
+                return this.$store.getters.getUpdateMemberResponse;
             }
         },
         watch: {
-            investigationLoadStatus: function(val) {
+            memberLoadStatus: function(val) {
                 if(val == 2) {
-                    this.buffer_investigation.id = this.investigation.id;
-                    this.buffer_investigation.title = this.investigation.title;
-                    this.buffer_investigation.tags = this.investigation.tags;
+                    this.buffer_member.id = this.member.id;
+                    this.buffer_member.full_name = this.member.full_name;
+                    this.buffer_member.country = this.member.country;
+                    this.buffer_member.designation = this.member.designation;
+                    this.bioEditor.root.innerHTML = this.member.bio;
                 }
             },
-            updateInvestigationLoadStatus: function(val) {
-                if(val == 2 && this.updateInvestigationResponse.success == 1) {
-                    this.$router.push('/investigation/view/'+this.investigation.id)
+            updateMemberLoadStatus: function(val) {
+                if(val == 2 && this.updateMemberResponse.success == 1) {
+                    this.$router.push('/member/view/'+this.member.id)
                     this.$message({
-                        title: 'Success',
-                        message: 'investigation updated Successfully',
+                        full_name: 'Success',
+                        message: 'member updated Successfully',
                         type: 'success'
                     });
-                } else if(val == 3 || this.updateInvestigationResponse.success == 0) {
+                } else if(val == 3 || this.updateMemberResponse.success == 0) {
                     this.$message({
-                        title: 'Warning',
+                        full_name: 'Warning',
                         message: 'Something went wrong. Try again!',
                         type: 'warning'
                     });
@@ -163,7 +205,7 @@
                     if(size > 500000)  {
                         this.$refs.upload.clearFiles();
                         this.$message({
-                            title: 'Warning',
+                            full_name: 'Warning',
                             message: 'image file can not be more than 500kb',
                             type: 'warning'
                         });
@@ -174,10 +216,10 @@
 
                 console.log(file);
                 
-                this.buffer_investigation.thumbnail = file.raw;
+                this.buffer_member.thumbnail = file.raw;
             },
             handleRemove(file, fileList) {
-                this.buffer_investigation.thumbnail = '';
+                this.buffer_member.thumbnail = '';
             },
             handlePreview(file) {
                 console.log(file);
@@ -198,23 +240,37 @@
                     validations.id.text = "author cant be empty";
                 }
 
-                if(!data.title) {
+                if(!data.full_name) {
                     valid = false;
                     validations.author.is_valid = false;
-                    validations.author.text = "title cant be empty";
+                    validations.author.text = "full_name cant be empty";
                 }
 
-                if(!data.tags) {
+                if(!data.country) {
                     valid = false;
-                    validations.tags.is_valid = false;
-                    validations.tags.text = "tags cant be empty";
+                    validations.country.is_valid = false;
+                    validations.country.text = "country cant be empty";
+                }
+
+                if(!data.designation) {
+                    valid = false;
+                    validations.designation.is_valid = false;
+                    validations.designation.text = "designation cant be empty";
+                }
+
+                if(!data.bio) {
+                    valid = false;
+                    validations.bio.is_valid = false;
+                    validations.bio.text = "bio cant be empty";
                 }
 
                 return valid;
             },
-            updateInvestigation(data) {
+            updateMember(data) {
+                data.bio = this.bioEditor.root.innerHTML;
+
                 if(this.validateFields(data)) {
-                    this.$store.dispatch('updateInvestigation', data);
+                    this.$store.dispatch('updateMember', data);
                 }
             }
         }

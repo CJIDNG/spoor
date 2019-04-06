@@ -95,8 +95,7 @@ export const user = {
                 data.id,
                 data.name,
                 data.email,
-                data.role_id,
-                data.active
+                data.role_id
             ).then(function(response) {
                 commit('setUpdateUserLoadStatus', 2);
                 commit('setUpdateUserResult', response.data);

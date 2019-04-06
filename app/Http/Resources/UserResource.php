@@ -26,12 +26,8 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'about' => $this->about,
-            'thumbnail' => $this->thumbnail,
             'role_id' => $role_id['id'],
             'roles' => $user_roles,
-            'active' => $this->active,
-            'active_label' => $this->active ? "Active" : "Inactive",
             'created_at' => ($this->created_at == NULL) ? $this->created_at : date('d M Y - H:i:s', $this->created_at->timestamp),
             'updated_at' => ($this->updated_at == NULL) ? $this->updated_at : date('d M Y - H:i:s', $this->updated_at->timestamp)
         ];

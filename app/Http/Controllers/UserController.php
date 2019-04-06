@@ -89,7 +89,6 @@ class UserController extends Controller {
         $user = User::findOrFail($request->input('id'));
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->active = $request->input('active');
         if($user->save()) {
             //Detach all roles from the user...
             $user->roles()->detach();

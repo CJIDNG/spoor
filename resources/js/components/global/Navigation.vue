@@ -20,13 +20,13 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/investigation">
                             <i class="fa fa-search"></i>
-                            Investigations
+                            Research
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/blog">
                             <i class="fa fa-th"></i>
-                            Blog
+                            Stories
                         </router-link>
                     </li>
                     <div class="nav-item dropdown">

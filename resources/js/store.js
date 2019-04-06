@@ -36,6 +36,7 @@ import { post } from './modules/post';
 import { investigation } from './modules/investigation';
 import { misc } from './modules/misc';
 import { member } from './modules/member';
+import { config } from './modules/config';
 
 /*
 Exports our data store.
@@ -47,7 +48,8 @@ export default new Vuex.Store({
         post,
         investigation,
         misc,
-        member
+        member,
+        config
     },
     plugins: [
         createPersistedState()

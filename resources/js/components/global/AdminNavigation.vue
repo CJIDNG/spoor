@@ -15,6 +15,10 @@
             <i class="el-icon-document"></i>
             <span>Manage Users</span>
         </el-menu-item>
+        <el-menu-item index="/admin/config">
+            <i class="el-icon-document"></i>
+            <span>Config</span>
+        </el-menu-item>
     </el-menu>
 </template>
 <script>

@@ -70,8 +70,8 @@
                                         </sup>
                                     </label>
                                     <select class="form-control" v-model="user.role_id">
-                                        <option v-for="role in roles" v-bind:key="role.id" :value="role.id">
-                                            {{ role.name }}
+                                        <option value="1">
+                                            Admin
                                         </option>
                                     </select>
                                     <small v-show="!validations.role_id.is_valid" class="form-text text-muted text-danger">
@@ -108,7 +108,7 @@
                     name: '',
                     email: '',
                     password: '',
-                    role_id: ''
+                    role_id: 1
                 },
                 cpassword: '',
                 HF: HELPERS,
@@ -144,12 +144,6 @@
             authUserLoadStatus() {
                 return this.$store.getters.getUserLoadStatus;
             },
-            roles() {
-                return this.$store.getters.getRoles;
-            },
-            rolesLoadStatus() {
-                return this.$store.getters.rolesLoadStatus;
-            },
             addUserLoadStatus() {
                 return this.$store.getters.getAddUserLoadStatus;
             },
@@ -178,7 +172,7 @@
 
         },
         created() {
-            this.$store.dispatch('getRoles');
+            
         },
         methods: {
             addUser(data) {

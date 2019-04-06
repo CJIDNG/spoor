@@ -278,6 +278,15 @@ const router = new VueRouter({
                             }
                         }
                     ]
+                },
+                {
+                    path: 'config',
+                    name: 'Config',
+                    components: {
+                        default: Vue.component('ConfigComponent', require('./pages/Config.vue').default),
+                        header: Vue.component('HeaderComponent', HeaderComponent),
+                        footer: Vue.component('FooterComponent', FooterComponent)
+                    }
                 }
             ]
         },

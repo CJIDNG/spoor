@@ -48,26 +48,15 @@
                                         </sup>
                                     </label>
                                     <select class="form-control" v-model="usr.role_id">
-                                        <option v-for="role in roles" v-bind:key="role.id" :value="role.id">
-                                            {{ role.name }}
+                                        <option value="1">
+                                            Admin
                                         </option>
                                     </select>
                                     <small v-show="!validations.role_id.is_valid" class="form-text text-muted text-danger">
                                         {{ validations.role_id.text }}
                                     </small>
                                 </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" v-model="usr.active" value="1"> Is User Active?
-                                        <span class="form-check-sign">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <small v-show="!validations.active.is_valid" class="form-text text-muted text-danger">
-                                    {{ validations.active.text }}
-                                </small>
-                                <button v-if="updateUserLoadStatus != 1" @click="editUser(usr)" user="button" 
+                                <button v-loading="updateUserLoadStatus == 1" @click="editUser(usr)" user="button" 
                                     class="btn btn-success">
                                     Submit
                                 </button>
@@ -113,12 +102,11 @@
                                         {{ validations.cpassword.text }}
                                     </small>
                                 </div>
-                                <button v-if="changeUserPasswordLoadStatus != 1" @click="changeUserPassword(changePassword)" user="button" 
+                                <button v-loading="changeUserPasswordLoadStatus == 1" 
+                                    @click="changeUserPassword(changePassword)" user="button" 
                                     class="btn btn-success">
                                     Submit
                                 </button>
-                                <action-loader class="text-left" :loading='changeUserPasswordLoadStatus == 1' 
-                                    :color="'#4caf50'"></action-loader>
                             </form>
                         </div>
                     </div>
@@ -140,15 +128,14 @@
                     id: this.$route.params.userId,
                     name: '',
                     email: '',
-                    role_id: '',
-                    active: ''
+                    role_id: 1,
+                    active: 1
                 },
                 changePassword: {
                     id: this.$route.params.userId,
                     password: ''
                 },
                 cpassword: '',
-                HF: HELPERS,
                 show_form: true,
                 validations: {
                     id: {
@@ -195,12 +182,6 @@
             userLoadStatus() {
                 return this.$store.getters.getAUserLoadStatus;
             },
-            roles() {
-                return this.$store.getters.getRoles;
-            },
-            rolesLoadStatus() {
-                return this.$store.getters.rolesLoadStatus;
-            },
             updateUserLoadStatus() {
                 return this.$store.getters.getUpdateUserLoadStatus;
             },
@@ -219,43 +200,39 @@
                 let vm = this;
                 if(vm.updateUserLoadStatus == 3 && vm.updateUserResult.success == 0) {
                     vm.show_form = true;
-                    vm.HF.showNotification(
-                        'top', 
-                        'center', 
-                        vm.updateUserResult.message, 
-                        'danger'
-                    );
+                    this.$message({
+                        title: 'Danger',
+                        message: 'try again!',
+                        type: 'danger'
+                    });
                 } else if(vm.updateUserLoadStatus == 2 && vm.updateUserResult.success == 1) {
                     vm.show_form = true;
-                    vm.HF.showNotification(
-                        'top', 
-                        'center', 
-                        vm.updateUserResult.message, 
-                        'success'
-                    );
+                    this.$message({
+                        title: 'Success',
+                        message: 'user updated successfully',
+                        type: 'success'
+                    });
                 } 
             },
             changeUserPasswordLoadStatus: function() {
                 let vm = this;
                 if(vm.changeUserPasswordResult === 3 && vm.changeUserPasswordResult.success == 0) {
                     vm.show_form = true;
-                    vm.HF.showNotification(
-                        'top',
-                        'center',
-                        vm.changeUserPasswordResult.message,
-                        'danger'
-                    );
+                    this.$message({
+                        title: 'Danger',
+                        message: vm.changeUserPasswordResult.message,
+                        type: 'danger'
+                    });
                 } else if(vm.changeUserPasswordLoadStatus == 2 && vm.changeUserPasswordResult.success == 1) {
                     vm.changePassword.password = '';
                     vm.cpassword = '';
                     
                     vm.show_form = true;
-                    vm.HF.showNotification(
-                        'top',
-                        'center',
-                        vm.changeUserPasswordResult.message,
-                        'success'
-                    );
+                    this.$message({
+                        title: 'Success',
+                        message: vm.changeUserPasswordResult.message,
+                        type: 'success'
+                    });
                 }
             },
             userLoadStatus: function(val) {
@@ -263,8 +240,6 @@
                 if(val == 2) {
                     vm.usr.name = vm.user.name;
                     vm.usr.email = vm.user.email;
-                    vm.usr.role_id = vm.user.role_id;
-                    vm.usr.active = vm.user.active;
                 }
             }
         },
@@ -272,8 +247,6 @@
 
         },
         created() {
-            this.$store.dispatch('getRoles');
-
             this.$store.dispatch('getAUser', {
                 id: this.$route.params.userId
             });

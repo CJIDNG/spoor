@@ -21,7 +21,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center title">
-                    <h2>Latest members</h2>
+                    <h2>Members</h2>
                 </div>
             </div>
             <i v-show="membersLoadStatus == 1" class="now-ui-icons loader_refresh spin"></i>
@@ -31,14 +31,13 @@
                         <div class="card" data-background="image" 
                             :style="'background-image: url(/storage/'+member.thumbnail+')'">
                             <div class="card-body">
-                                <label v-for="(tag,index) in member.tags.split(',')" :key="index" 
-                                    class="badge badge-pill badge-info ml-1">
-                                    {{tag}}
+                                <label class="badge badge-pill badge-info ml-1">
+                                    {{ member.designation }}
                                 </label>
                                 <a href="#pablo">
                                     <h3 class="card-title">
                                         <router-link class="card-title" :to="'/member/view/'+member.id">
-                                            {{ member.title }}
+                                            {{ member.full_name }}
                                         </router-link>
                                     </h3>
                                 </a>
