@@ -57,100 +57,6 @@ const router = new VueRouter({
             }
         },
         {
-            path: '/blog',
-            components: {
-                default: Vue.component('BlogComponent', require('./pages/Post.vue').default),
-                header: Vue.component('HeaderComponent', HeaderComponent),
-                footer: Vue.component('FooterComponent', FooterComponent)
-            },
-            children: [
-                {
-                    path: '',
-                    name: 'Blog',
-                    component: Vue.component('BrowsePosts', require('./components/post/Browse.vue').default)
-                },
-                {
-                    path: 'edit/:postId',
-                    name: 'Edit Post',
-                    component: Vue.component(
-                        'EditPost', 
-                        require('./components/post/Update.vue').default
-                    ),
-                    beforeEnter: requireAuth,
-                    meta: {
-                        permitted: ['Super-admin', 'Admin']
-                    }
-                },
-                {
-                    path: 'view/:postId',
-                    name: 'View Post',
-                    component: Vue.component(
-                        'ViewPost',
-                        require('./components/post/View.vue').default
-                    )
-                },
-                {
-                    path: 'add',
-                    name: 'Add Post',
-                    component: Vue.component(
-                        'AddPost', 
-                        require('./components/post/Add.vue').default
-                    ),
-                    beforeEnter: requireAuth,
-                    meta: {
-                        permitted: ['Super-admin','Admin']
-                    }
-                }
-            ]
-        },
-        {
-            path: '/investigation',
-            components: {
-                default: Vue.component('InvestigationComponent', require('./pages/Investigation.vue').default),
-                header: Vue.component('HeaderComponent', HeaderComponent),
-                footer: Vue.component('FooterComponent', FooterComponent)
-            },
-            children: [
-                {
-                    path: '',
-                    name: 'Investigation',
-                    component: Vue.component('BrowseInvestigations', require('./components/investigation/Browse.vue').default)
-                },
-                {
-                    path: 'edit/:investigationId',
-                    name: 'Edit Investigation',
-                    component: Vue.component(
-                        'EditInvestigation', 
-                        require('./components/investigation/Update.vue').default
-                    ),
-                    beforeEnter: requireAuth,
-                    meta: {
-                        permitted: ['Super-admin', 'Admin']
-                    }
-                },
-                {
-                    path: 'view/:investigationId',
-                    name: 'View Investigation',
-                    component: Vue.component(
-                        'ViewInvestigation',
-                        require('./components/investigation/View.vue').default
-                    )
-                },
-                {
-                    path: 'add',
-                    name: 'Add Investigation',
-                    component: Vue.component(
-                        'AddInvestigation', 
-                        require('./components/investigation/Add.vue').default
-                    ),
-                    beforeEnter: requireAuth,
-                    meta: {
-                        permitted: ['Super-admin','Admin']
-                    }
-                }
-            ]
-        },
-        {
             path: '/member',
             components: {
                 default: Vue.component('MemberComponent', require('./pages/Member.vue').default),
@@ -225,6 +131,7 @@ const router = new VueRouter({
             children: [
                 {
                     path: '',
+                    redirect: '/admin/users',
                     name: 'Admin Dashboard',
                     components: {
                         default: Vue.component('UsersComponent', require('./pages/Dashboard.vue').default),

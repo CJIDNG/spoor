@@ -31,9 +31,6 @@ Vue.use( Vuex );
     Imports all of the modules used in the application to build the data store.
 */
 import { user } from './modules/user.js';
-import { postStatus } from './modules/postStatus';
-import { post } from './modules/post';
-import { investigation } from './modules/investigation';
 import { misc } from './modules/misc';
 import { member } from './modules/member';
 import { config } from './modules/config';
@@ -44,9 +41,6 @@ Exports our data store.
 export default new Vuex.Store({
     modules: {
         user,
-        postStatus,
-        post,
-        investigation,
         misc,
         member,
         config

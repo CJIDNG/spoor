@@ -4,8 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8df0e6d1020105afcb9773c535152eb4",
+    "content-hash": "ab8dd8fc596c2bffc366f76a05955025",
     "packages": [
+        {
+            "name": "cnvs/canvas",
+            "version": "v4.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cnvs/canvas.git",
+                "reference": "7147cf606f537ac0bd3483555193971e7991c2d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cnvs/canvas/zipball/7147cf606f537ac0bd3483555193971e7991c2d1",
+                "reference": "7147cf606f537ac0bd3483555193971e7991c2d1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/support": "5.5.x|5.6.x|5.7.x|5.8.x",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "3.5.x|3.6.x|3.7.x|3.8.x",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Canvas\\CanvasServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Canvas\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Todd Austin",
+                    "email": "austin.todd.j@gmail.com"
+                }
+            ],
+            "description": "A Laravel publishing platform",
+            "homepage": "https://cnvs.io",
+            "keywords": [
+                "canvas",
+                "cnvs",
+                "laravel",
+                "publishing"
+            ],
+            "time": "2019-06-15T20:45:07+00:00"
+        },
         {
             "name": "defuse/php-encryption",
             "version": "v2.2.1",

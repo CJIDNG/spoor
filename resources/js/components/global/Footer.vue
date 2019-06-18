@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-9 col-sm-9 col-12 ml-auto mr-auto">
                     <div class="row">
-                        <div class="col-md-3 col-sm-3 col-6">
+                        <div class="col-md-4 col-sm-4 col-6">
                             <div class="links">
                                 <ul class="uppercase-links stacked-links">
                                     <li>
@@ -33,14 +33,9 @@
                                         </router-link>
                                     </li>
                                     <li>
-                                        <router-link to="/investigation">
-                                            Research
-                                        </router-link>
-                                    </li>
-                                    <li>
-                                        <router-link to="/blog">
+                                        <a href="/blog">
                                             Stories
-                                        </router-link>
+                                        </a>
                                     </li>
                                     <li>
                                         <router-link to="/member">
@@ -50,7 +45,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-6">
+                        <div class="col-md-4 col-sm-4 col-6">
                             <div class="links">
                                 <ul class="uppercase-links stacked-links">
                                     <li>
@@ -61,31 +56,13 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-6">
+                        <div class="col-md-4 col-sm-4 col-6">
                             <div class="links">
                                 <ul class="uppercase-links stacked-links">
                                     <li>
                                         <router-link to="/be-a-member">
                                             Be A Member
                                         </router-link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-6">
-                            <div class="links">
-                                <ul class="stacked-links">
-                                    <li>
-                                        <h4>{{ investigationPagination.total }}
-                                        <br>
-                                        <small>Researches</small>
-                                        </h4>
-                                    </li>
-                                    <li>
-                                        <h4>{{ postPagination.total }}
-                                        <br>
-                                        <small>Stories</small>
-                                        </h4>
                                     </li>
                                 </ul>
                             </div>
@@ -121,13 +98,6 @@
     export default {
         created() {
             this.$store.dispatch('loadConfig');
-            this.$store.dispatch('loadInvestigations', {
-                url: null
-            });
-            this.$store.dispatch('loadPosts', {
-                url: null,
-                investigationId: null,
-            });
         },
         computed: {
             config() {
@@ -135,24 +105,6 @@
             },
             configLoadStatus() {
                 return this.$store.getters.getConfigLoadStatus;
-            },
-            investigations() {
-                return this.$store.getters.getInvestigations;
-            },
-            investigationsLoadStatus() {
-                return this.$store.getters.getInvestigationsLoadStatus;
-            },
-            investigationPagination() {
-                return this.$store.getters.getInvestigationPagination;
-            },
-            posts() {
-                return this.$store.getters.getPosts;
-            },
-            postsLoadStatus() {
-                return this.$store.getters.getPostsLoadStatus;
-            },
-            postPagination() {
-                return this.$store.getters.getPostPagination;
             },
         }
     }

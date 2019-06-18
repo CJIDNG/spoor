@@ -32,7 +32,7 @@ class ApplyForMembershipMail extends Mailable
     public function build()
     {
         return  $this->subject("New Membership Application")
-                ->to('frknasir@yahoo.com')
+                ->to('spoor@ptcij.org')
                 ->view('emails.applyForMembership');
     }
 }

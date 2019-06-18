@@ -15,48 +15,8 @@
         </div>-->
         <div class="main">
             <div class="container">
-                <div v-if="posts.length > 0" style="border: 0px;" 
-                        class="card card-plain card-blog text-center">
-                    <div class="card-body">
-                        <h3 style="border: 0px; padding: 20px;" class="card-title">
-                            <router-link :to="'/blog/view/'+posts[0].id">
-                                {{ posts[0].title }}
-                            </router-link>
-                        </h3>
-                    </div>
-                    <div class="card-image">
-                        <router-link :to="'/blog/view/'+posts[0].id">
-                            <img v-if="posts[0].thumbnail" class="img img-raised" :src="'/storage/'+posts[0].thumbnail">
-                            <img v-else class="img img-raised" src="/public/img/image_placeholder.jpg">
-                        </router-link>
-                    </div>
-                </div>
+                
             </div>
-
-            <footer style="padding: 40px 0px;" class="footer footer-black footer-big">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-8 ml-auto mr-auto">
-                            <div class="logo text-center">
-                                <h3>Key Facts</h3>
-                            </div><br>
-                            <div class="text-center">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <h1>{{ investigationPagination.total }}</h1> Researches
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <h1>{{ postPagination.total }}</h1> Stories
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <h1>{{ memberPagination.total }}</h1> Members
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
 
 
             <div class="features-5 section-image" style="background-image: url('/img/sections/the-how-photographer.jpg')">
@@ -143,13 +103,6 @@
         },
         created() {
             this.$store.dispatch('loadConfig');
-            this.$store.dispatch('loadInvestigations', {
-                url: null
-            });
-            this.$store.dispatch('loadPosts', {
-                url: null,
-                investigationId: null,
-            });
             this.$store.dispatch('loadMembers', {
                 url: null
             });
@@ -160,24 +113,6 @@
             },
             configLoadStatus() {
                 return this.$store.getters.getConfigLoadStatus;
-            },
-            investigations() {
-                return this.$store.getters.getInvestigations;
-            },
-            investigationsLoadStatus() {
-                return this.$store.getters.getInvestigationsLoadStatus;
-            },
-            investigationPagination() {
-                return this.$store.getters.getInvestigationPagination;
-            },
-            posts() {
-                return this.$store.getters.getPosts;
-            },
-            postsLoadStatus() {
-                return this.$store.getters.getPostsLoadStatus;
-            },
-            postPagination() {
-                return this.$store.getters.getPostPagination;
             },
             members() {
                 return this.$store.getters.getMembers;

@@ -18,16 +18,10 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/investigation">
-                            <i class="fa fa-search"></i>
-                            Research
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/blog">
+                        <a href="/blog" class="nav-link">
                             <i class="fa fa-th"></i>
-                            Stories
-                        </router-link>
+                            Blog
+                        </a>
                     </li>
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
