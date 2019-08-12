@@ -1,14 +1,11 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 use App\LocalGovernment;
 use App\Incident;
 
 class State extends Model {
-    
-    use Searchable;
 
     /**
      * Eloquent Relationships
