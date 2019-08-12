@@ -1,20 +1,19 @@
 <?php
+
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
-use App\LocalGovernment;
 use App\Incident;
+use App\State;
 
-class State extends Model {
-    
-    use Searchable;
-
+class LocalGovernment extends Model
+{
     /**
      * Eloquent Relationships
      */
-    public function localGovernments() {
-        return $this->hasMany(LocalGovernment::class);
+    public function state() {
+        return $this->belongsTo(State::class);
     }
 
     public function incidents() {

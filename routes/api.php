@@ -32,6 +32,48 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function() {
      */
 
     /**
+     * Incident Routes
+     */
+    Route::group(['prefix' => 'incident'], function() {
+        Route::post(
+            '/',
+            'IncidentController@store'
+        );
+        Route::put(
+            '/',
+            'IncidentController@update'
+        );
+        Route::delete(
+            '/',
+            'IncidentController@destroy'
+        );
+    });
+    /**
+     * End Incident Routes
+     */
+
+    /**
+     * Incident Type Routes
+     */
+    Route::group(['prefix' => 'incidentType'], function() {
+        Route::post(
+            '/',
+            'IncidentTypeController@store'
+        );
+        Route::put(
+            '/',
+            'IncidentTypeController@update'
+        );
+        Route::delete(
+            '/',
+            'IncidentTypeController@destroy'
+        );
+    });
+    /**
+     * End Incident Type Routes
+     */
+
+    /**
      * Config Routes
      */
     Route::group(['prefix' => 'config'], function() {
@@ -46,6 +88,15 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function() {
       '/state',
       'StateController@update'
     );
+
+    /**
+     * Member
+     */
+    Route::group(['prefix' => 'member'], function() {
+        Route::post('/', 'MemberController@store');
+        Route::post('/{id}', 'MemberController@update');
+        Route::delete('/', 'MemberController@destroy');
+    });
 });
 
 Route::group(['prefix'=> 'v1'], function() {
@@ -61,45 +112,11 @@ Route::group(['prefix'=> 'v1'], function() {
      */
 
     /**
-     * Post Routes
-     */
-    Route::group(['prefix' => 'post'], function() {
-        Route::get('/', 'PostController@index');
-        Route::get('/latest/{count}', 'PostController@latestPosts');
-        Route::post('/', 'PostController@store')->middleware('auth:api');
-        Route::get('/view/{id}', 'PostController@show');
-        Route::post('/{id}', 'PostController@update')->middleware('auth:api');
-        Route::put('/approve', 'PostController@approve')->middleware('auth:api');
-        Route::delete('/', 'PostController@destroy')->middleware('auth:api');
-    });
-    /**
-     * End Post Routes
-     */
-
-    /**
-     * Investigation Routes
-     */
-    Route::group(['prefix' => 'investigation'], function() {
-        Route::get('/', 'InvestigationController@index');
-        Route::get('/{investigationId}', 'InvestigationController@index');
-        Route::post('/', 'InvestigationController@store')->middleware('auth:api');
-        Route::get('/view/{id}', 'InvestigationController@show');
-        Route::post('/{id}', 'InvestigationController@update')->middleware('auth:api');
-        Route::delete('/', 'InvestigationController@destroy')->middleware('auth:api');
-    });
-    /**
-     * End Investigation Routes
-     */
-
-    /**
      * Member Routes
      */
     Route::group(['prefix' => 'member'], function() {
         Route::get('/', 'MemberController@index');
-        Route::post('/', 'MemberController@store')->middleware('auth:api');
         Route::get('/view/{id}', 'MemberController@show');
-        Route::post('/{id}', 'MemberController@update')->middleware('auth:api');
-        Route::delete('/', 'MemberController@destroy')->middleware('auth:api');
     });
     /**
      * End Member Routes
@@ -127,5 +144,29 @@ Route::group(['prefix'=> 'v1'], function() {
     });
     /**
      * End Mail Routes
+     */
+
+    
+    /**
+   * Locations Routes
+   */
+    Route::get(
+        '/states',
+        'StateController@index'
+    );
+    Route::get(
+        '/state/{id}',
+        'StateController@show'
+    );
+    Route::get(
+        '/state/{stateId}/localGovernments',
+        'LocalGovernmentController@index'
+    );
+    Route::get(
+        '/localGovernment/{id}',
+        'LocalGovernmentController@show'
+    );
+    /**
+     * End Location Routes
      */
 });
