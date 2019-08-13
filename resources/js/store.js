@@ -34,6 +34,8 @@ import { user } from './modules/user.js';
 import { misc } from './modules/misc';
 import { member } from './modules/member';
 import { config } from './modules/config';
+import { incidentType } from './modules/incidentType';
+import { incident } from './modules/incident';
 
 /*
 Exports our data store.
@@ -43,7 +45,9 @@ export default new Vuex.Store({
         user,
         misc,
         member,
-        config
+        config,
+        incidentType,
+        incident
     },
     plugins: [
         createPersistedState()

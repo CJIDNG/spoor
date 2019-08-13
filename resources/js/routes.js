@@ -57,6 +57,96 @@ const router = new VueRouter({
             }
         },
         {
+            path: '/incidentTypes',
+            components: {
+                default: Vue.component('IncidentType', require('./pages/IncidentType.vue').default),
+                header: Vue.component('HeaderComponent', HeaderComponent),
+                footer: Vue.component('FooterComponent', FooterComponent)
+            },
+            children: [
+                {
+                    path: '',
+                    name: 'Incident Types',
+                    component: Vue.component(
+                        'BrowseIncidentType',
+                        require('./components/incidentType/Browse.vue').default
+                    ),
+                    meta: {
+                        permittedToMakeChanges: ['Super-admin', 'Admin']
+                    }
+                },
+                {
+                    path: 'edit/:incidentTypeId',
+                    name: 'Edit Incident Type',
+                    component: Vue.component(
+                        'EditIncidentType', 
+                        require('./components/incidentType/Update.vue').default
+                    ),
+                    beforeEnter: requireAuth,
+                    meta: {
+                        permitted: ['Super-admin', 'Admin']
+                    }
+                },
+                {
+                    path: 'add',
+                    name: 'Add Incident Type',
+                    component: Vue.component(
+                        'AddIncidentType', 
+                        require('./components/incidentType/Add.vue').default
+                    ),
+                    beforeEnter: requireAuth,
+                    meta: {
+                        permitted: ['Super-admin', 'Admin']
+                    }
+                }
+            ]
+        },
+        {
+            path: 'incidents',
+            components: {
+                default: Vue.component('Incidents', require('./pages/Incident.vue').default),
+                header: Vue.component('HeaderComponent', HeaderComponent),
+                footer: Vue.component('FooterComponent', FooterComponent)
+            },
+            beforeEnter: function(to, from, next) {
+                if(to.params.id !== "undefined") {
+                    next();
+                }
+            },
+            children: [
+                {
+                    path: '',
+                    name: 'Browse Incidents',
+                    component: Vue.component('BrowseIncidents', require('./components/incidents/BrowseIncidents.vue')),
+                    meta: {
+                        isElectionPage: true,
+                        isMap: true,
+                        permittedToMakeChanges: ['Super-admin', 'Admin', 'Tracking Officer']
+                    }
+                },
+                {
+                    path: 'edit/:incidentId',
+                    name: 'Edit Incident',
+                    component: Vue.component('EditIncident', require('./components/incidents/EditIncident.vue')),
+                    beforeEnter: requireAuth,
+                    meta: {
+                        permitted: ['Super-admin', 'Admin', 'Tracking Officer'],
+                        isElectionPage: true
+                    }
+                },
+                {
+                    path: 'add',
+                    name: 'Add Incident',
+                    component: Vue.component('AddIncident', require('./components/incidents/AddIncident.vue')),
+                    beforeEnter: requireAuth,
+                    meta: {
+                        permitted: ['Super-admin', 'Admin', 'Tracking Officer'],
+                        isElectionPage: true
+                    }
+                }
+            ]
+        },
+        {
             path: '/member',
             components: {
                 default: Vue.component('MemberComponent', require('./pages/Member.vue').default),

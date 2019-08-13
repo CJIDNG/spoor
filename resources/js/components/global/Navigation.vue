@@ -1,7 +1,7 @@
 <style>
 </style>
 <template>
-    <nav class="navbar navbar-expand-md navbar-default">
+    <nav class="navbar navbar-expand-lg bg-success">
         <div class="container">
             <div class="navbar-translate">
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" 
@@ -61,6 +61,9 @@
                             <router-link to="/admin" class="dropdown-item">
                                 Admin
                             </router-link>
+                            <router-link to="/incidentTypes" class="dropdown-item">
+                                Incident Types
+                            </router-link>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -72,6 +75,12 @@
                             </form>
                         </ul>
                     </div>
+                    <li v-else class="nav-item">
+                        <a class="nav-link" href="/login">
+                            <i class="fa fa-user"></i>
+                            Login
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

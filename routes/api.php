@@ -112,6 +112,37 @@ Route::group(['prefix'=> 'v1'], function() {
      */
 
     /**
+     * IncidentTypes routes
+     */
+    Route::get(
+        'incidentTypes',
+        'IncidentTypeController@index'
+    );
+    Route::get(
+        'incidentType/{id}',
+        'IncidentTypeController@show'
+    );
+    /**
+     * End IncidentTypes routes
+     */
+
+    /**
+     * Incident Routes
+     */
+    Route::get(
+        '/incidents/limit/{limit}', 
+        'IncidentController@index'
+    );
+    Route::get(
+        '/location/{locationType}/incidents/limit/{limit}', 
+        'IncidentController@filterIncidentsBy'
+    );
+    Route::get(
+        '/incident/{id}', 
+        'IncidentController@show'
+    );
+
+    /**
      * Member Routes
      */
     Route::group(['prefix' => 'member'], function() {
