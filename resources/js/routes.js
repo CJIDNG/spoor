@@ -102,47 +102,34 @@ const router = new VueRouter({
             ]
         },
         {
-            path: 'incidents',
+            path: '/incidents',
             components: {
                 default: Vue.component('Incidents', require('./pages/Incident.vue').default),
                 header: Vue.component('HeaderComponent', HeaderComponent),
                 footer: Vue.component('FooterComponent', FooterComponent)
             },
-            beforeEnter: function(to, from, next) {
-                if(to.params.id !== "undefined") {
-                    next();
-                }
-            },
             children: [
                 {
                     path: '',
                     name: 'Browse Incidents',
-                    component: Vue.component('BrowseIncidents', require('./components/incidents/BrowseIncidents.vue')),
+                    component: Vue.component('BrowseIncidents', require('./components/incident/Browse.vue').default),
                     meta: {
-                        isElectionPage: true,
-                        isMap: true,
-                        permittedToMakeChanges: ['Super-admin', 'Admin', 'Tracking Officer']
+                        isMap: true
                     }
                 },
                 {
                     path: 'edit/:incidentId',
                     name: 'Edit Incident',
-                    component: Vue.component('EditIncident', require('./components/incidents/EditIncident.vue')),
+                    component: Vue.component('EditIncident', require('./components/incident/Update.vue').default),
                     beforeEnter: requireAuth,
-                    meta: {
-                        permitted: ['Super-admin', 'Admin', 'Tracking Officer'],
-                        isElectionPage: true
-                    }
+                    meta: {}
                 },
                 {
                     path: 'add',
                     name: 'Add Incident',
-                    component: Vue.component('AddIncident', require('./components/incidents/AddIncident.vue')),
+                    component: Vue.component('AddIncident', require('./components/incident/Add.vue').default),
                     beforeEnter: requireAuth,
-                    meta: {
-                        permitted: ['Super-admin', 'Admin', 'Tracking Officer'],
-                        isElectionPage: true
-                    }
+                    meta: {}
                 }
             ]
         },

@@ -24,6 +24,25 @@ export const incident = {
         deleteIncidentResult: {}
     },
     actions: {
+        getIncidents({ commit }, data) {
+            commit('setIncidentsLoadStatus', 1);
+
+            IncidentAPI.getIncidents(
+                data.url,
+                data.limit
+            ).then(function (response) {
+                commit('setIncidentsLoadStatus', 2);
+                commit('setIncidents', response.data);
+                commit('setIPagination', {
+                    meta: response.data.meta,
+                    links: response.data.links
+                });
+            }).catch(function () {
+                commit('setIncidentsLoadStatus', 3);
+                commit('setIncidents', []);
+            });
+        },
+
         getStateIncidents({commit, state}, data) {
             commit('setIncidentsLoadStatus', 1);
 

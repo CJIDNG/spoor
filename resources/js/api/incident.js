@@ -5,9 +5,19 @@ import { CONFIG } from '../config.js';
 
 export default {
     /* *
+    GET /api/v1/incidents
+    */
+    getIncidents: function(url = null, limit = 20) {
+        url = url || CONFIG.API_URL + 
+            '/incidents/limit/' + limit;
+
+        return axios.get(url);
+    },
+
+    /* *
     GET /api/v1/state/{state_id}/incidents
     */
-    getStateIncidents: function(electionId, stateId, url = null) {
+    getStateIncidents: function(stateId, url = null) {
         url = url || CONFIG.API_URL + 
 			'/state/' +
 			stateId +
@@ -21,7 +31,7 @@ export default {
     /* *
     GET /api/v1/localGovernment/{local_government_id}/incidents
     */
-    getLocalGovernmentIncidents: function(electionId, localGovernmentId) {
+    getLocalGovernmentIncidents: function(localGovernmentId) {
         return axios.get( 
             CONFIG.API_URL + 
             '/localGovernment/' +

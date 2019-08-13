@@ -23,6 +23,12 @@
                             Blog
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/incidents">
+                            <i class="fa fa-users"></i>
+                            Incidents
+                        </router-link>
+                    </li>
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
