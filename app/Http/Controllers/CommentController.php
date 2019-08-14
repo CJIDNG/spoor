@@ -37,7 +37,7 @@ class CommentController extends Controller
         $comment = new Comment;
         $comment->comment = $request->comment;
         $comment->user_id = auth()->user()->id;
-        $comment->slug = $slug;
+        $comment->post_slug = $slug;
 
         $comment->save();
     }
