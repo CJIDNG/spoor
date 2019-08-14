@@ -16,11 +16,12 @@
 </style>
 <template>
 	<div>
-		<div id="mapcontainer"></div>
-
+		<div id="map"></div>
 
 		<!--info window-->
-        <div v-loading="incidentLoadStatus === 1" v-show="info_window_active" id="info-window" class="col-md-4">
+        <div v-loading="incidentLoadStatus === 1" 
+			v-show="info_window_active" 
+			id="info-window" class="col-md-4">
             <div class="card card-nav-tabs">
                 <div class="card-header card-header-success">
                     <h4 class="card-title">{{ incident.title }}</h4>
@@ -139,12 +140,16 @@ export default {
 			url: null,
 			limit: 20000
 		});
+		L.map('map').setView([
+				9.0765, 
+				7.3986
+			], 9);
 	},
 	methods: {
 		initMap() {
 			let vm = this;
 
-			vm.map = L.map('mapcontainer').setView([
+			vm.map = L.map('map').setView([
 				9.0765, 
 				7.3986
 			], 9);
@@ -206,7 +211,7 @@ export default {
 			}
 		},
 		deleteIncident(data) {
-			if(confirm("are you sure?")){
+			if(confirm("are you sure?")) {
 				this.$store.dispatch('deleteIncident', {
 					id: data
 				});
