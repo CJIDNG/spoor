@@ -1,10 +1,10 @@
 <style scoped>
 	#map {
-        position: fixed;
         width: 100%;
-        height: 100vh;
-        margin-top: 0px;
-        z-index: 1;
+        height: 91vh;
+        margin: 0 auto;
+		z-index: 1;
+		border: 1px  solid #eeeeee;
     }
 
     #info-window {
@@ -16,19 +16,18 @@
 </style>
 <template>
 	<div>
-		<div id="map"></div>
+		<div id="map" ref="mapElement"></div>
 
 		<!--info window-->
-        <div v-loading="incidentLoadStatus === 1" 
-			v-show="info_window_active" 
+        <div v-show="info_window_active" 
 			id="info-window" class="col-md-4">
             <div class="card card-nav-tabs">
                 <div class="card-header card-header-success">
                     <h4 class="card-title">{{ incident.title }}</h4>
                     <p class="category"></p> 
-                    <span id="incident-type" class="badge badge-warning">
+                    <!-- <span id="incident-type" class="badge badge-warning">
 						{{ incident.incidentType.name }}
-					</span>
+					</span> -->
                     <br>
                     <div>
                         <router-link class="btn btn-just-icon btn-sm btn-warning" 
@@ -69,6 +68,8 @@
 </template>
 <script>
 import ActionLoader from 'vue-spinner/src/ScaleLoader.vue';
+import moment from 'moment';
+
 export default {
 	components: {
 		ActionLoader
@@ -78,7 +79,8 @@ export default {
 			map: null,
 			info_window_active: false,
 			markers: null,
-			map_first_init: true
+			map_first_init: true,
+			moment: moment
 		}
 	},
 	computed: {
@@ -134,22 +136,19 @@ export default {
 		}
 	},
 	mounted() {
+		
 	},
 	created() {
 		this.$store.dispatch('getIncidents', {
 			url: null,
 			limit: 20000
 		});
-		L.map('map').setView([
-				9.0765, 
-				7.3986
-			], 9);
 	},
 	methods: {
 		initMap() {
 			let vm = this;
 
-			vm.map = L.map('map').setView([
+			vm.map = L.map(vm.$refs['mapElement']).setView([
 				9.0765, 
 				7.3986
 			], 9);
@@ -169,8 +168,8 @@ export default {
 		buildMarkers(map) {
 			let vm = this;
 			vm.markers = L.markerClusterGroup({ chunkedLoading: true });
-			for(let i = 0; i < vm.incidents.length; i++) {
-				let incident = vm.incidents[i];
+			for(let i = 0; i < vm.incidents.data.length; i++) {
+				let incident = vm.incidents.data[i];
 				let icon = new L.Icon.Default();
 				icon.options.shadowSize = [0,0];
 				let marker = L.marker([

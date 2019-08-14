@@ -1,10 +1,6 @@
 <style scoped>
-    .el-aside {
-        border: 1px solid;
-    }
-
     .el-main {
-        border: 1px solid;
+        padding: 0px;
     }
 
     #switch {

@@ -105,8 +105,7 @@ const router = new VueRouter({
             path: '/incidents',
             components: {
                 default: Vue.component('Incidents', require('./pages/Incident.vue').default),
-                header: Vue.component('HeaderComponent', HeaderComponent),
-                footer: Vue.component('FooterComponent', FooterComponent)
+                header: Vue.component('HeaderComponent', HeaderComponent)
             },
             children: [
                 {
