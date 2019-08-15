@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Incident;
+use App\State;
+use App\LocalGovernment;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\IncidentResource;
@@ -27,20 +29,15 @@ class IncidentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function stateIncidents($stateId) {
+    public function stateIncidents($stateId, $limit) {
         $state = State::findOrFail($stateId);
-        $incidents = $state->incidents()->paginate(20);
+        $incidents = $state->incidents()->paginate($limit);
         return IncidentResource::collection($incidents);
     }
 
-    public function localGovernmentIncidents($localGovernmentId) {
+    public function localGovernmentIncidents($localGovernmentId, $limit) {
         $localGovernment = LocalGovernment::findOrFail($localGovernmentId);
-        $incidents = $localGovernment->incidents()->paginate(20);
-        return IncidentResource::collection($incidents);
-    }
-
-    public function filterIncidentsBy($locationType, $l) {
-        $incidents = Incident::where('location_type', $locationType)->paginate($l);
+        $incidents = $localGovernment->incidents()->paginate($limit);
         return IncidentResource::collection($incidents);
     }
 
@@ -88,7 +85,7 @@ class IncidentController extends Controller
      * @param  \App\Incident  $incident
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateIncidentRequest $request) {
+    public function update(UpdateRequest $request) {
         $incident = Incident::findOrFail($request->input('id'));
 
         $incident->title = $request->input('title');
@@ -113,7 +110,7 @@ class IncidentController extends Controller
      * @param  \App\Incident  $incident
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DelIncidentRequest $request) {
+    public function destroy(DeleteRequest $request) {
         $incident = Incident::findOrFail($request->input('id'));
 
         if($incident->delete()) {

@@ -51,7 +51,9 @@ export const incident = {
             }
 
             IncidentAPI.getStateIncidents(
-                data.stateId
+                data.stateId,
+                data.limit,
+                data.url
             ).then(function(response) {
                 commit('setIncidentsLoadStatus', 2);
                 commit('setIncidents', response.data);
@@ -73,34 +75,12 @@ export const incident = {
             }
 
             IncidentAPI.getLocalGovernmentIncidents(
-                data.localGovernmentId
+                data.localGovernmentId,
+                data.limit,
+                data.url
             ).then(function(response) {
                 commit('setIncidentsLoadStatus', 2);
                 commit('setIncidents', response.data);
-                commit('setIPagination', {
-                    meta: response.data.meta,
-                    links: response.data.links
-                });
-            }).catch(function() {
-                commit('setIncidentsLoadStatus', 3);
-                commit('setIncidents', []);
-            });
-        },
-
-        filterIncidentsBy({commit, state}, data) {
-            commit('setIncidentsLoadStatus', 1);
-
-            if(state.incidents.length > 0) {
-                state.incidents.splice(0, state.incidents.length);
-            }
-
-            IncidentAPI.filterIncidentsBy(
-                data.locationType,
-                data.url,
-                data.limit
-            ).then(function(response) {
-                commit('setIncidentsLoadStatus', 2);
-                commit('setIncidents', response.data.data);
                 commit('setIPagination', {
                     meta: response.data.meta,
                     links: response.data.links

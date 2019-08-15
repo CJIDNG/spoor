@@ -29,7 +29,8 @@ class UpdateRequest extends FormRequest
             'description' => 'required',
             'incident_type_id' => 'required',
             'location_id' => 'required',
-            'location_type' => 'required'
+            'location_type' => 'required',
+            'incident_date' => 'required'
         ];
     }
 }

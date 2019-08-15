@@ -25,7 +25,7 @@
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/incidents">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-map-marker"></i>
                             Incidents
                         </router-link>
                     </li>
@@ -59,7 +59,7 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
-                            <i class="tim-icons icon-single-02"></i>
+                            <i class="fa fa-user-circle-o"></i>
                             {{ user.name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -83,7 +83,7 @@
                     </div>
                     <li v-else class="nav-item">
                         <a class="nav-link" href="/login">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-user-circle-o"></i>
                             Login
                         </a>
                     </li>

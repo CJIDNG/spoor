@@ -12,6 +12,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('../../public/js/paper-kit');
+    require('../../public/js/plugins/bootstrap-datetimepicker');
 
     window.L = require('leaflet');
     require('leaflet.markercluster');

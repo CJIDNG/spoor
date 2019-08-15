@@ -134,8 +134,12 @@ Route::group(['prefix'=> 'v1'], function() {
         'IncidentController@index'
     );
     Route::get(
-        '/location/{locationType}/incidents/limit/{limit}', 
-        'IncidentController@filterIncidentsBy'
+        '/incidents/state/{stateId}/limit/{limit}', 
+        'IncidentController@stateIncidents'
+    );
+    Route::get(
+        '/incidents/localGovernment/{localGovernmentId}/limit/{limit}', 
+        'IncidentController@localGovernmentIncidents'
     );
     Route::get(
         '/incident/{id}', 

@@ -17,11 +17,11 @@ export default {
     /* *
     GET /api/v1/state/{state_id}/incidents
     */
-    getStateIncidents: function(stateId, url = null) {
+    getStateIncidents: function(stateId, limit, url = null) {
         url = url || CONFIG.API_URL + 
-			'/state/' +
+			'/incidents/state/' +
 			stateId +
-			'/incidents';
+			'/limit/' + limit;
         
         return axios.get( 
             url
@@ -31,26 +31,13 @@ export default {
     /* *
     GET /api/v1/localGovernment/{local_government_id}/incidents
     */
-    getLocalGovernmentIncidents: function(localGovernmentId) {
-        return axios.get( 
-            CONFIG.API_URL + 
-            '/localGovernment/' +
-            localGovernmentId +
-            '/incidents'
-        );
-    },
-
-    /**
-     * GET /api/v1/location/{location_type}
-     */
-    filterIncidentsBy: function(locationType, url = null, limit = null) {
-        limit = limit || 10000;
-
+    getLocalGovernmentIncidents: function(localGovernmentId, limit, url = null) {
         url = url || CONFIG.API_URL + 
-            '/location/' + locationType + 
-			'/incidents/limit/' + limit;
-			
-        return axios.get(
+            '/incidents/localGovernment/' +
+            localGovernmentId +
+            '/limit/' + limit;
+
+        return axios.get( 
             url
         );
     },

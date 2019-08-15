@@ -21,44 +21,38 @@
 		<!--info window-->
         <div v-show="info_window_active" 
 			id="info-window" class="col-md-4">
-            <div class="card card-nav-tabs">
-                <div class="card-header card-header-success">
-                    <h4 class="card-title">{{ incident.title }}</h4>
-                    <p class="category"></p> 
-                    <!-- <span id="incident-type" class="badge badge-warning">
-						{{ incident.incidentType.name }}
-					</span> -->
-                    <br>
-                    <div>
-                        <router-link class="btn btn-just-icon btn-sm btn-warning" 
+			<div class="card" data-background="color" data-color="orange">
+				<div class="card-body">
+					<div class="author">
+						<span>{{ incident.title }}</span>
+						<small>
+							<span id="incident-type" class="badge badge-warning">
+								{{ incident.incidentType.name }}
+							</span>
+						</small>
+					</div>
+					<span class="category-social pull-right">
+						<router-link class="btn btn-just-icon btn-sm btn-warning" 
                             :to="'/incidents/edit/'+incident.id">
-                            <i class="fa fa-plus"></i>
+                            <i class="fa fa-edit"></i>
                         </router-link>
                         <button @click="deleteIncident(incident.id)" class="btn btn-just-icon btn-sm btn-danger">
                             <i class="fa fa-times"></i>
                         </button>
-                    </div>
-                </div>
-                <div v-html="incident.description" class="card-body"></div>
-                <div class="card-footer">
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <button @click="closeInfoWindow" class="btn btn-success btn-sm">
-                                <i class="fa fa-times"></i>
-                                close
-                            </button>
-                        </li>
-                        <li class="list-inline-item">
-                            <div class="stats">
-                                <i class="fa fa-clock-o"></i> 
-                                <span class="created_at">
-									{{ moment(incident.created_at, 'DD MMM YYYY H:m:s').format('lll') }}
-								</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+					</span>
+					<div class="clearfix"></div>
+					<p v-html="incident.description" class="card-description"></p><br>
+					<column-chart :data="{'Death Count': incident.death_count, 'Injured Count': incident.injured_count}"></column-chart><br>
+					<button @click="closeInfoWindow" class="btn btn-success btn-sm">
+						<i class="fa fa-times"></i>
+						close
+					</button>
+					<span class="created_at">
+						<i class="fa fa-clock-o"></i>
+						{{ moment(incident.incident_date).format('ll') }}
+					</span>
+				</div>
+			</div>
         </div>
 
 
@@ -69,6 +63,7 @@
 <script>
 import ActionLoader from 'vue-spinner/src/ScaleLoader.vue';
 import moment from 'moment';
+import { Loading } from 'element-ui';
 
 export default {
 	components: {
@@ -80,7 +75,8 @@ export default {
 			info_window_active: false,
 			markers: null,
 			map_first_init: true,
-			moment: moment
+			moment: moment,
+			infoWindowLoadingInstance: null
 		}
 	},
 	computed: {
@@ -107,6 +103,18 @@ export default {
 		}
 	},
 	watch: {
+		incidentLoadStatus: function (val) {
+			if (val == 1) {
+				this.infoWindowLoadingInstance = Loading.service({
+					target: '#info-window',
+					text: 'loading...'
+				});
+			} else {
+				this.$nextTick(() => { // Loading should be closed asynchronously
+					this.infoWindowLoadingInstance.close();
+				});
+			}
+		},
 		incidents: function() {
 			if(this.map_first_init) {
 				this.initMap();
@@ -151,7 +159,7 @@ export default {
 			vm.map = L.map(vm.$refs['mapElement']).setView([
 				9.0765, 
 				7.3986
-			], 9);
+			], 6);
 
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -170,7 +178,16 @@ export default {
 			vm.markers = L.markerClusterGroup({ chunkedLoading: true });
 			for(let i = 0; i < vm.incidents.data.length; i++) {
 				let incident = vm.incidents.data[i];
-				let icon = new L.Icon.Default();
+				let icon = L.icon({
+					iconUrl: '/images/vendor/leaflet/dist/marker-icon.png',
+					//shadowUrl: 'leaf-shadow.png',
+
+					//iconSize:     [38, 95], // size of the icon
+					//shadowSize:   [50, 64], // size of the shadow
+					//iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+					//shadowAnchor: [4, 62],  // the same for the shadow
+					//popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+				});
 				icon.options.shadowSize = [0,0];
 				let marker = L.marker([
 					incident.location.latitude,
@@ -179,9 +196,9 @@ export default {
 					icon : icon
 				});
 				marker.id = incident.id;
-				marker.on('click', function() {
+				marker.on('click', () => {
 					this.$store.dispatch('getIncident', {
-						id: this.id
+						id: incident.id
 					});
 					vm.openInfoWindow();
 				});
