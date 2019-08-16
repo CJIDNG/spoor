@@ -24,7 +24,8 @@ class NewRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required'
+            'title' => 'required',
+            'file' => 'required|max:1999'
         ];
     }
 }

@@ -109,21 +109,11 @@
                 let vm = this;
                 
                 if(vm.deleteIncidentTypeLoadStatus == 3 && vm.deleteIncidentTypeResult.success == 0) {
-                    vm.HF.showNotification(
-                        'top', 
-                        'center', 
-                        vm.deleteIncidentTypeResult.message, 
-                        'danger'
-                    );
+                    alert(vm.deleteIncidentTypeResult.message);
                 } else if(vm.deleteIncidentTypeLoadStatus == 2 && vm.deleteIncidentTypeResult.success == 1) {
                     //reload Incident Types
                     this.$store.dispatch('getIncidentTypes');
-                    vm.HF.showNotification(
-                        'top', 
-                        'center', 
-                        vm.deleteIncidentTypeResult.message, 
-                        'success'
-                    );
+                    alert(vm.deleteIncidentTypeResult.message);
                 } 
             }
         },

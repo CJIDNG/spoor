@@ -140,8 +140,8 @@
 								<el-date-picker
 									v-model="incdnt.incident_date"
 									type="date"
-                                    format="yyyy/MM/DD"
-									value-format="yyyy/MM/DD"
+                                    format="yyyy-MM-dd"
+									value-format="yyyy-MM-dd"
 									placeholder="Pick a day">
 								</el-date-picker>
 								<small v-show="!validations.incident_date.is_valid" class="form-text text-muted text-danger">
@@ -285,9 +285,19 @@
                 }
             },
             updateIncidentLoadStatus: function(val) {
-                if(val === 3 || val === 2) {
-                    alert(this.updateIncidentResult.message);
-                } 
+                if(val === 3) {
+					this.$message({
+                        title: 'Warning',
+                        message: this.updateIncidentResult.message,
+                        type: 'warning'
+                    });
+                } else if (val === 2) {
+					this.$message({
+                        title: 'Success',
+                        message: this.updateIncidentResult.message,
+                        type: 'success'
+                    });
+				}
             },
             state_slct: function (val) {
                 this.$store.dispatch('getLocalGovernments', {

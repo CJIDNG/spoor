@@ -17,6 +17,7 @@ class CreateResourcesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('url');
+            $table->string('extension');
             $table->integer('download_count')->default(0);
             $table->timestamps();
 

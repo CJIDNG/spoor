@@ -10,7 +10,7 @@ use App\Http\Resources\MemberResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Auth;
+use Auth; 
 
 class MemberController extends Controller
 {

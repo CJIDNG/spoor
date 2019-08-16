@@ -9,7 +9,7 @@
 						<h3 class="title text-center">
 							Edit Incident Type
 						</h3>
-						<form v-show="show_form">
+						<form>
 							<div class="form-group">
 								<label for="">
 									name
@@ -87,11 +87,17 @@
             updateIncidentTypeLoadStatus: function() {
                 let vm = this;
                 if(vm.updateIncidentTypeLoadStatus == 3 && vm.updateIncidentTypeResult.success == 0) {
-                    vm.show_form = true;
-					alert(vm.updateIncidentTypeResult.message);
+                    this.$message({
+                        title: 'Success',
+                        message: vm.updateIncidentTypeResult.message,
+                        type: 'success'
+                    });
                 } else if(vm.updateIncidentTypeLoadStatus == 2 && vm.updateIncidentTypeResult.success == 1) {
-                    vm.show_form = true;
-                    alert(vm.updateIncidentTypeResult.message);
+                    this.$message({
+                        title: 'Success',
+                        message: vm.updateIncidentTypeResult.message,
+                        type: 'success'
+                    });
                 } 
             },
             incidentTypeLoadStatus: function(val) {

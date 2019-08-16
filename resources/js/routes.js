@@ -133,6 +133,27 @@ const router = new VueRouter({
             ]
         },
         {
+            path: '/resources',
+            components: {
+                default: Vue.component('Resources', require('./pages/Resource.vue').default),
+                header: Vue.component('HeaderComponent', HeaderComponent),
+                footer: Vue.component('FooterComponent', FooterComponent)
+            },
+            children: [
+                {
+                    path: '',
+                    name: 'Browse Resources',
+                    component: Vue.component('BrowseResources', require('./components/resource/Browse.vue').default)
+                },
+                {
+                    path: 'add',
+                    name: 'Add Resource',
+                    component: Vue.component('AddResoure', require('./components/resource/Add.vue').default),
+                    beforeEnter: requireAuth
+                }
+            ]
+        },
+        {
             path: '/member',
             components: {
                 default: Vue.component('MemberComponent', require('./pages/Member.vue').default),
@@ -284,7 +305,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    store.dispatch('getAuthUser');
+    //store.dispatch('getAuthUser');
     next();
 });
 

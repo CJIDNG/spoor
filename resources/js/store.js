@@ -38,6 +38,7 @@ import { incidentType } from './modules/incidentType';
 import { incident } from './modules/incident';
 import { state } from './modules/state';
 import { localGovernment } from './modules/localGovernment';
+import { resource } from './modules/resource';
 
 /*
 Exports our data store.
@@ -51,7 +52,8 @@ export default new Vuex.Store({
         incidentType,
         incident,
         state,
-        localGovernment
+        localGovernment,
+        resource
     },
     plugins: [
         createPersistedState()

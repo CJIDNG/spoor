@@ -53,7 +53,6 @@
                 incidentType: {
                     name: ''
                 },
-                HF: HELPERS,
                 show_form: true,
                 validations: {
                     name: {
@@ -82,15 +81,19 @@
                 let vm = this;
                 if(vm.addIncidentTypeLoadStatus == 3 && vm.addIncidentTypeResult.success == 0) {
                     vm.show_form = true;
-                    vm.HF.showNotification(
-                        'top', 
-                        'center', 
-                        vm.addIncidentTypeResult.message, 
-                        'danger'
-                    );
+                    this.$message({
+                        title: 'Warning',
+                        message: vm.addIncidentTypeResult.message,
+                        type: 'warning'
+                    });
                 } else if(vm.addIncidentTypeLoadStatus == 2 && vm.addIncidentTypeResult.success == 1) {
                     vm.show_form = false;
                     vm.clearIncidentTypeForm();
+                    this.$message({
+                        title: 'Success',
+                        message: vm.addIncidentTypeResult.message,
+                        type: 'success'
+                    });
                 } 
             }
         },

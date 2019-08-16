@@ -140,8 +140,8 @@
 								<el-date-picker
 									v-model="incident.incident_date"
 									type="date"
-									format="yyyy/MM/DD"
-									value-format="yyyy/MM/DD"
+									format="yyyy-MM-dd"
+									value-format="yyyy-MM-dd"
 									placeholder="Pick a day">
 								</el-date-picker>
 								<small v-show="!validations.incident_date.is_valid" class="form-text text-muted text-danger">
@@ -178,8 +178,8 @@
                 incident: {
                     title: '',
 					description: '',
-					death_count: null,
-					injured_count: null,
+					death_count: 0,
+					injured_count: 0,
                     incident_type_id: '',
                     location_id: '',
 					location_type: '',
@@ -260,10 +260,19 @@
                 let vm = this;
                 if(vm.addIncidentLoadStatus == 3 && vm.addIncidentResult.success == 0) {
                     vm.show_form = true;
-                    alert(vm.addIncidentResult.message);
+					this.$message({
+                        title: 'Warning',
+                        message: vm.addIncidentResult.message,
+                        type: 'warning'
+                    });
                 } else if(vm.addIncidentLoadStatus == 2 && vm.addIncidentResult.success == 1) {
                     vm.show_form = false;
-                    vm.clearIncidentForm();
+					vm.clearIncidentForm();
+					this.$message({
+                        title: 'Success',
+                        message: vm.addIncidentResult.message,
+                        type: 'success'
+                    });
                 } 
             },
             location_type: function() {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Resource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Resources\ResourceResource;
 use App\Http\Requests\Resource\NewRequest;
@@ -73,6 +75,8 @@ class ResourceController extends Controller
     public function destroy(DeleteRequest $request)
     {
         $resource = Resource::findOrFail($request->input('id'));
+
+        Storage::delete('public/'.$resource->url);
 
         if($resource->delete()) {
             return response()->json([

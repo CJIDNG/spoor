@@ -69,7 +69,7 @@
                             Contact
                         </router-link>
                     </li>
-                    <div v-if="loginStatus == 2" class="nav-item dropdown">
+                    <div v-if="user.name" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
@@ -130,6 +130,8 @@
             }
         },
         mounted () {},
-        created () {}
+        created () {
+            this.$store.dispatch('getAuthUser')
+        }
     };
 </script> 
