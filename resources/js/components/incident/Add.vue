@@ -130,21 +130,20 @@
 							<small v-show="!validations.location_type.is_valid" class="form-text text-muted text-danger">
 								{{ validations.location_type.text }}
 							</small><br><br>
-							<div class="input-group date" id="datetimepicker">
+							<div class="form-group">
 								<label for="">
 									Incident Date(YYYY/MM/DD)
 									<sup>
 										<i class="fa fa-asterisk small" style="color:red"></i>
 									</sup>
 								</label>
-								<input type="text" class="form-control datetimepicker" v-model="incident.incident_date" placeholder="2018/04/21" />
-								<div class="input-group-append">
-									<span class="input-group-text">
-										<span class="glyphicon glyphicon-calendar">
-											<i class="fa fa-calendar" aria-hidden="true"></i>
-										</span>
-									</span>
-								</div>
+								<el-date-picker
+									v-model="incident.incident_date"
+									type="date"
+									format="yyyy/MM/DD"
+									value-format="yyyy/MM/DD"
+									placeholder="Pick a day">
+								</el-date-picker>
 								<small v-show="!validations.incident_date.is_valid" class="form-text text-muted text-danger">
 									{{ validations.incident_date.text }}
 								</small>
@@ -187,7 +186,6 @@
 					incident_date: ''
                 },
                 description_editor: null,
-                HF: HELPERS,
                 show_form: true,
                 validations: {
                     title: {

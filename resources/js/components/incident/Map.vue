@@ -31,7 +31,7 @@
 							</span>
 						</small>
 					</div>
-					<span class="category-social pull-right">
+					<span v-if="userLoadStatus == 2 && user != {}" class="category-social pull-right">
 						<router-link class="btn btn-just-icon btn-sm btn-warning" 
                             :to="'/incidents/edit/'+incident.id">
                             <i class="fa fa-edit"></i>
@@ -51,6 +51,10 @@
 						<i class="fa fa-clock-o"></i>
 						{{ moment(incident.incident_date).format('ll') }}
 					</span>
+					<span>
+						<i class="fa fa-map-marker"></i>
+						{{ incident.location.name }}
+					</span>
 				</div>
 			</div>
         </div>
@@ -63,7 +67,6 @@
 <script>
 import ActionLoader from 'vue-spinner/src/ScaleLoader.vue';
 import moment from 'moment';
-import { Loading } from 'element-ui';
 
 export default {
 	components: {
@@ -71,26 +74,50 @@ export default {
 	},
 	data() {
 		return {
+			incident: {
+				"id":null,
+				"title":"",
+				"description":"",
+				"death_count":null,
+				"injured_count":null,
+				"incidentType":{
+					"id":null,
+					"name":"",
+					"created_at":"",
+					"updated_at":""
+				},
+				"location":{
+					"id":null,
+					"name":"",
+					"latitude":"",
+					"longitude":"",
+					"code":"",
+					"created_at":"",
+					"updated_at":""
+				},
+				"incident_date":"",
+				"created_at":"",
+				"updated_at":""
+			},
 			map: null,
 			info_window_active: false,
 			markers: null,
 			map_first_init: true,
-			moment: moment,
-			infoWindowLoadingInstance: null
+			moment: moment
 		}
 	},
 	computed: {
+		user() {
+			return this.$store.getters.getUser;
+		},
+		userLoadStatus() {
+			return this.$store.getters.getUserLoadStatus;
+		},
 		incidents() {
 			return this.$store.getters.getIncidents;
 		},
 		incidentsLoadStatus() {
 			return this.$store.getters.getIncidentsLoadStatus;
-		},
-		incident () {
-			return this.$store.getters.getIncident;
-		},
-		incidentLoadStatus () {
-			return this.$store.getters.getIncidentLoadStatus;
 		},
 		iPagination() {
 			return this.$store.getters.getIPagination;
@@ -103,18 +130,6 @@ export default {
 		}
 	},
 	watch: {
-		incidentLoadStatus: function (val) {
-			if (val == 1) {
-				this.infoWindowLoadingInstance = Loading.service({
-					target: '#info-window',
-					text: 'loading...'
-				});
-			} else {
-				this.$nextTick(() => { // Loading should be closed asynchronously
-					this.infoWindowLoadingInstance.close();
-				});
-			}
-		},
 		incidents: function() {
 			if(this.map_first_init) {
 				this.initMap();
@@ -197,9 +212,10 @@ export default {
 				});
 				marker.id = incident.id;
 				marker.on('click', () => {
-					this.$store.dispatch('getIncident', {
-						id: incident.id
-					});
+					//this.$store.dispatch('getIncident', {
+					//	id: incident.id
+					//});
+					this.incident = incident;
 					vm.openInfoWindow();
 				});
 				marker.bindPopup(incident.location.name);

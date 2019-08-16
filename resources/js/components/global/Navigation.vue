@@ -33,6 +33,20 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
+                            <i class="fa fa-file-text"></i>
+                            Resources
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <!--<li class="dropdown-header">Dropdown header</li>-->
+                            <router-link class="dropdown-item" to="/resources">
+                                Downloads
+                            </router-link>
+                        </ul>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
+                            href="#pk" role="button" aria-haspopup="true" 
+                            aria-expanded="false">
                             <i class="fa fa-exclamation-triangle"></i>
                             Get Involved
                         </a>
@@ -95,33 +109,27 @@
 </template>
 <script>
      export default {
-        components: {
-
-        },
-        data() {
+        components: {},
+        data () {
             return {
                 csrf_token: $('meta[name="csrf-token"]').attr('content'),
                 loginStatus: 0
             };
         },
         computed: {
-            user() {
+            user () {
                 return this.$store.getters.getUser;
             },
-            userLoadStatus() {
+            userLoadStatus () {
                 return this.$store.getters.getUserLoadStatus;
-            },
+            }
         },
         watch: {
-            userLoadStatus: function(val) {
+            userLoadStatus: function (val) {
                 this.loginStatus = val;
             }
         },
-        mounted() {
-
-        },
-        created() {
-            this.$store.dispatch('getAuthUser');
-        }
+        mounted () {},
+        created () {}
     };
 </script> 

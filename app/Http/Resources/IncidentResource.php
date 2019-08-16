@@ -23,6 +23,8 @@ class IncidentResource extends JsonResource
             'injured_count' => $this->injured_count,
             'incidentType' => $this->incidentType,
             'location' => $this->location,
+            'location_id' => $this->location_id,
+            'location_type' => $this->location_type,
             'incident_date' => $this->incident_date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at

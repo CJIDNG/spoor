@@ -38,6 +38,16 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <router-link to="/incidents">
+                                            Incidents
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link to="/resources">
+                                            Resources
+                                        </router-link>
+                                    </li>
+                                    <li>
                                         <router-link to="/member">
                                             Members
                                         </router-link>

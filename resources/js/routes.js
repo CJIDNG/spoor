@@ -284,22 +284,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    /*let cont = true;
-    let onlyAdminPaths = [];
-    let st = store;
-    /**
-     * make sure only admins are allowed to navigate to this route
-     */
-    
-    /*if(onlyAdminPaths.length > 0 && (onlyAdminPaths.includes(to.name) || onlyAdminPaths.includes(to.meta.name)) && 
-        st.getters.getSession.userCtx.roles.indexOf('_admin') === -1) {
-        cont = false;
-    }
-    if(cont) {
-        next();
-    } else {
-        next('/');
-    }*/
+    store.dispatch('getAuthUser');
     next();
 });
 

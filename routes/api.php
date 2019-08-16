@@ -74,6 +74,23 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function() {
      */
 
     /**
+     * Resource Routes
+     */
+    Route::group(['prefix' => 'resource'], function() {
+        Route::post(
+            '/',
+            'ResourceController@store'
+        );
+        Route::delete(
+            '/',
+            'ResourceController@destroy'
+        );
+    });
+    /**
+     * End Resource Routes
+     */
+
+    /**
      * Config Routes
      */
     Route::group(['prefix' => 'config'], function() {
@@ -156,6 +173,14 @@ Route::group(['prefix'=> 'v1'], function() {
     /**
      * End Member Routes
      */
+
+    /**
+     * Resource Routes
+     */
+    Route::get(
+        '/resources', 
+        'ResourceController@index'
+    );
 
     /**
      * Mail Routes

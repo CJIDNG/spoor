@@ -102,14 +102,13 @@
                     </button>
                 </div>
             </div>
-            <div id="action-btn">
+            <div v-if="userLoadStatus == 2 && user != {}" id="action-btn">
                 <router-link class="btn btn-success btn-round btn-just-icon btn-lg" 
                     :to="'/incidents/add'">
                     <i class="fa fa-plus"></i>
                 </router-link>
             </div>
             <map-component v-if="active_component === 'map'"></map-component>
-            <viz-component v-else-if="active_component === 'viz'"></viz-component>
         </el-main>
     </el-container>
 </template>
@@ -132,6 +131,12 @@ export default {
         }
     },
     computed: {
+        user() {
+            return this.$store.getters.getUser;
+        },
+        userLoadStatus() {
+            return this.$store.getters.getUserLoadStatus;
+        },
         incidents() {
 			return this.$store.getters.getIncidents;
 		},
