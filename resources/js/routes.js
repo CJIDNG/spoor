@@ -19,29 +19,29 @@ import store from './store.js';
 /*
     Extends Vue to use Vue Router
 */
-Vue.use( VueRouter );
+Vue.use(VueRouter);
 Vue.use(routerHistory);
 
 /*
 	This will cehck to see if the user is authenticated or not.
 */
-function requireAuth (to, from, next) {
+function requireAuth(to, from, next) {
 	/*
 		Determines where we should send the user.
 	*/
-	function proceed () {
+    function proceed() {
 		/*
 			If the user has been loaded determine where we should
 			send the user.
 		*/
-        if ( store.getters.getUserLoadStatus == 2 ) { 
+        if (store.getters.getUserLoadStatus == 2) {
             next();
-        } else if(store.getters.getUserLoadStatus == 3) {
+        } else if (store.getters.getUserLoadStatus == 3) {
             //user is not logged in
             console.log('you are not logged in');
         }
     }
-    
+
     proceed();
 }
 
@@ -79,7 +79,7 @@ const router = new VueRouter({
                     path: 'edit/:incidentTypeId',
                     name: 'Edit Incident Type',
                     component: Vue.component(
-                        'EditIncidentType', 
+                        'EditIncidentType',
                         require('./components/incidentType/Update.vue').default
                     ),
                     beforeEnter: requireAuth,
@@ -91,7 +91,7 @@ const router = new VueRouter({
                     path: 'add',
                     name: 'Add Incident Type',
                     component: Vue.component(
-                        'AddIncidentType', 
+                        'AddIncidentType',
                         require('./components/incidentType/Add.vue').default
                     ),
                     beforeEnter: requireAuth,
@@ -170,7 +170,7 @@ const router = new VueRouter({
                     path: 'edit/:memberId',
                     name: 'Edit Member',
                     component: Vue.component(
-                        'EditMember', 
+                        'EditMember',
                         require('./components/member/Update.vue').default
                     ),
                     beforeEnter: requireAuth,
@@ -190,12 +190,12 @@ const router = new VueRouter({
                     path: 'add',
                     name: 'Add Member',
                     component: Vue.component(
-                        'AddMember', 
+                        'AddMember',
                         require('./components/member/Add.vue').default
                     ),
                     beforeEnter: requireAuth,
                     meta: {
-                        permitted: ['Super-admin','Admin']
+                        permitted: ['Super-admin', 'Admin']
                     }
                 }
             ]
@@ -261,7 +261,7 @@ const router = new VueRouter({
                             path: 'edit/:userId',
                             name: 'Edit User',
                             component: Vue.component(
-                                'EditUser', 
+                                'EditUser',
                                 require('./components/users/EditUser.vue').default
                             ),
                             beforeEnter: requireAuth,
@@ -273,7 +273,7 @@ const router = new VueRouter({
                             path: 'add',
                             name: 'Add User',
                             component: Vue.component(
-                                'AddUser', 
+                                'AddUser',
                                 require('./components/users/AddUser.vue').default
                             ),
                             beforeEnter: requireAuth,
@@ -295,7 +295,7 @@ const router = new VueRouter({
             ]
         },
     ],
-    scrollBehavior (to, from, savedPosition) {
+    scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
             return savedPosition;
         } else {

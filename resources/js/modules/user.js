@@ -5,7 +5,7 @@
 | The Vuex data store for the user
 */
 
-import UserAPI from '../api/user.js'; 
+import UserAPI from '../api/user.js';
 
 export const user = {
     state: {
@@ -26,50 +26,50 @@ export const user = {
         deleteUserResult: {}
     },
     actions: {
-        getUsers({commit}, data) {
+        getUsers({ commit }, data) {
             commit('setUsersLoadStatus', 1);
 
             UserAPI.getUsers(
                 data.url
-            ).then(function(response) {
+            ).then(function (response) {
                 commit('setUsersLoadStatus', 2);
                 commit('setUsers', response.data.data);
                 commit('setUserPagination', {
                     meta: response.data.meta,
                     links: response.data.links
                 });
-            }).catch(function() {
+            }).catch(function () {
                 commit('setUsersLoadStatus', 3);
                 commit('setUsers', {});
             });
         },
-        getAuthUser({commit}) {
+        getAuthUser({ commit }) {
             commit('setUserLoadStatus', 1);
 
             UserAPI.getAuthUser()
-                .then(function(response) {
+                .then(function (response) {
                     commit('setUserLoadStatus', 2);
                     commit('setUser', response.data.data);
                 })
-                .catch(function() {
+                .catch(function () {
                     commit('setUserLoadStatus', 3);
                     commit('setUser', {});
                 });
         },
-        getAUser({commit}, data) {
+        getAUser({ commit }, data) {
             commit('setAUserLoadStatus', 1);
 
             UserAPI.getAUser(
                 data.id
-            ).then(function(response) {
+            ).then(function (response) {
                 commit('setAUserLoadStatus', 2);
                 commit('setAUser', response.data.data);
-            }).catch(function() {
+            }).catch(function () {
                 commit('setAUserLoadStatus', 3);
                 commit('setAUser', {});
             });
         },
-        addUser({commit}, data) {
+        addUser({ commit }, data) {
             commit('setAddUserLoadStatus', 1);
 
             UserAPI.addUser(
@@ -77,10 +77,10 @@ export const user = {
                 data.email,
                 data.password,
                 data.role_id
-            ).then(function(response) {
+            ).then(function (response) {
                 commit('setAddUserLoadStatus', 2);
                 commit('setAddUserResult', response.data);
-            }).catch(function() {
+            }).catch(function () {
                 commit('setAddUserLoadStatus', 3);
                 commit('setAddUserResult', {
                     success: 0,
@@ -88,7 +88,7 @@ export const user = {
                 });
             });
         },
-        updateUser({commit}, data) {
+        updateUser({ commit }, data) {
             commit('setUpdateUserLoadStatus', 1);
 
             UserAPI.updateUser(
@@ -96,10 +96,10 @@ export const user = {
                 data.name,
                 data.email,
                 data.role_id
-            ).then(function(response) {
+            ).then(function (response) {
                 commit('setUpdateUserLoadStatus', 2);
                 commit('setUpdateUserResult', response.data);
-            }).catch(function() {
+            }).catch(function () {
                 commit('setUpdateUserLoadStatus', 3);
                 commit('setUpdateUserResult', {
                     success: 0,
@@ -107,16 +107,16 @@ export const user = {
                 });
             });
         },
-        changeUserPassword({commit}, data) {
+        changeUserPassword({ commit }, data) {
             commit('setChangeUserPasswordLoadStatus', 1);
 
             UserAPI.changeUserPassword(
                 data.id,
                 data.password
-            ).then(function(response) {
+            ).then(function (response) {
                 commit('setChangeUserPasswordLoadStatus', 2);
                 commit('setChangeUserPasswordResult', response.data);
-            }).catch(function() {
+            }).catch(function () {
                 commit('setChangeUserPasswordLoadStatus', 3);
                 commit('setChangeUserPasswordResult', {
                     success: 0,
@@ -124,15 +124,15 @@ export const user = {
                 });
             });
         },
-        deleteUser({commit}, data) {
+        deleteUser({ commit }, data) {
             commit('setDeleteUserLoadStatus', 1);
 
             UserAPI.deleteUser(
                 data.id
-            ).then(function(response) {
+            ).then(function (response) {
                 commit('setDeleteUserLoadStatus', 2);
                 commit('setDeleteUserResult', response.data);
-            }).catch(function() {
+            }).catch(function () {
                 commit('setDeleteUserLoadStatus', 3);
                 commit('setDeleteUserResult', {
                     success: 0,
@@ -161,7 +161,7 @@ export const user = {
                 next_page_url: links.next,
                 prev_page_url: links.prev
             };
-        
+
             state.userPagination = pagination;
         },
 
