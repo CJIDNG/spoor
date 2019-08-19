@@ -43,11 +43,11 @@ export const resource = {
 
             ResourceAPI.addResource(
                 data.title,
-				data.file
-            ).then(function(response) {
+                data.file
+            ).then(function (response) {
                 commit('setAddResourceLoadStatus', 2);
                 commit('setAddResourceResult', response.data);
-            }).catch(function() {
+            }).catch(function () {
                 commit('setAddResourceLoadStatus', 3);
                 commit('setAddResourceResult', {
                     success: 0,
@@ -61,10 +61,10 @@ export const resource = {
 
             ResourceAPI.deleteResource(
                 data.id
-            ).then(function(response) {
+            ).then(function (response) {
                 commit('setDeleteResourceLoadStatus', 2);
                 commit('setDeleteResourceResult', response.data);
-            }).catch(function() {
+            }).catch(function () {
                 commit('setDeleteResourceLoadStatus', 3);
                 commit('setDeleteResourceResult', {
                     success: 0,
@@ -94,7 +94,7 @@ export const resource = {
                 next_page_url: links.next,
                 prev_page_url: links.prev
             };
-        
+
             state.rPagination = pagination;
         },
 
@@ -125,7 +125,7 @@ export const resource = {
 
         getRPagination(state) {
             return state.rPagination;
-        }, 
+        },
 
         getAddResourceLoadStatus(state) {
             return state.addResourceLoadStatus;
