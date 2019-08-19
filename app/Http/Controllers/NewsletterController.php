@@ -97,7 +97,7 @@ class NewsletterController extends Controller
     {
         $email = $request->input('email');
         
-        if(Newsletter::unsubscribe($email)){
+        if(Newsletter::delete($email)){
             $success = 1;
             $message = "You have been unsubscribed successfully";
         }else{
