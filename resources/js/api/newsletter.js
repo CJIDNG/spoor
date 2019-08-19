@@ -8,7 +8,6 @@ export default {
      * GET  /api/v1/newsletter
     */
     getNewsletter: function () {
-
         return axios.get(CONFIG.API_URL + "/newsletter");
     },
 
