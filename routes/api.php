@@ -31,6 +31,27 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function() {
      * End User Routes
      */
 
+     /**
+     * Incident Routes
+     */
+    Route::group(['prefix' => 'newsletter'], function() {
+        Route::get(
+            '/',
+            'NewsletterController@index'
+        );
+        Route::post(
+            '/',
+            'NewsletterController@store'
+        );
+        Route::delete(
+            '/',
+            'NewsletterController@destroy'
+        );
+    });
+    /**
+     * End Incident Routes
+     */
+
     /**
      * Incident Routes
      */

@@ -25,7 +25,7 @@ import createPersistedState from 'vuex-persistedstate'
 /*
 Initializes Vuex on Vue.
 */
-Vue.use( Vuex );
+Vue.use(Vuex);
 
 /*
     Imports all of the modules used in the application to build the data store.
@@ -39,6 +39,7 @@ import { incident } from './modules/incident';
 import { state } from './modules/state';
 import { localGovernment } from './modules/localGovernment';
 import { resource } from './modules/resource';
+import { newsletter } from './modules/newsletter';
 
 /*
 Exports our data store.
@@ -53,7 +54,8 @@ export default new Vuex.Store({
         incident,
         state,
         localGovernment,
-        resource
+        resource,
+        newsletter
     },
     plugins: [
         createPersistedState()
