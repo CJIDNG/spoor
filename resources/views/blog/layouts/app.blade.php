@@ -33,13 +33,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <!-- FontAwesome scripts -->
-    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+    {{-- <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script> --}}
+    <script src="https://use.fontawesome.com/7846545834.js"></script>
+
+    {{-- Paper Kit UI --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/paper-kit-2@2.1.0/assets/css/paper-kit.css">
 
     <!-- Additional style sheets -->
     @stack('styles')
 </head>
 <body>
     <div id="app">
+        @include('blog.partials.mainnavbar')
         @yield('content')
     </div>
 
