@@ -2,9 +2,9 @@
 
 @section('title', $data['post']->title)
 
-@push('styles')
+<!--@push('styles')
     @include('blog.partials.styles')
-@endpush
+@endpush-->
 
 @push('meta')
     <meta name="description" content="{{ $data['meta']['meta_description'] }}">
@@ -41,7 +41,6 @@
 
 @section('content')
     <div class="container">
-        @include('blog.partials.navbar')
 
         <div class="row justify-content-md-center">
             <div class="col col-lg-8">

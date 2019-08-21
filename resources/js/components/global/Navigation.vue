@@ -60,7 +60,7 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/member">
                             <i class="fa fa-users"></i>
-                            Members
+                            Team
                         </router-link>
                     </li>
                     <li class="nav-item">
@@ -77,7 +77,19 @@
                             {{ user.name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <!--<li class="dropdown-header">Dropdown header</li>-->
+                            <a class="dropdown-item" href="/blogadmin/posts">
+                                Posts
+                            </a>
+                            <a class="dropdown-item" href="/blogadmin/tags">
+                                Tags
+                            </a>
+                            <a class="dropdown-item" href="/blogadmin/topics">
+                                Topics
+                            </a>
+                            <a class="dropdown-item" href="/blogadmin">
+                                Stats
+                            </a>
+                            <div class="dropdown-divider"></div>
                             <router-link to="/admin" class="dropdown-item">
                                 Admin
                             </router-link>

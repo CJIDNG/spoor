@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/incidents" class="nav-link"><i class="fa fa-map-marker"></i>
+                        <a href="/#/incidents" class="nav-link"><i class="fa fa-map-marker"></i>
                             Incidents</a>                         
                     </li>
                     <div class="nav-item dropdown">
@@ -31,7 +31,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <!--<li class="dropdown-header">Dropdown header</li>-->
-                            <a href="/resources" class="dropdown-item">Downloads</a>
+                            <a href="/#/resources" class="dropdown-item">Downloads</a>
                         </ul>
                     </div>
                     <div class="nav-item dropdown">
@@ -43,19 +43,21 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <!--<li class="dropdown-header">Dropdown header</li>-->
-                            <a href="/be-a-member" class="dropdown-item">Be a Member</a>
+                            <a href="/#/be-a-member" class="dropdown-item">Be a Member</a>
                         </ul>
                     </div>
                     <li class="nav-item">
-                        <a href="/member" class="nav-link"><i class="fa fa-users"></i>
-                            Members</a>
+                        <a href="/#/member" class="nav-link"><i class="fa fa-users"></i>
+                            Team
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/contact" class="nav-link">
+                        <a href="/#/contact" class="nav-link">
                             <i class="fa fa-address-book"></i>
                             Contact
                         </a>
                     </li>
+                    @if(Auth::check())
                     <div v-if="user.name" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
@@ -64,27 +66,44 @@
                             {{ $data['user']->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <!--<li class="dropdown-header">Dropdown header</li>-->
-                            <a href="/admin" class="dropdown-item">Admin</a>
-                            <a href="/incidentTypes" class="dropdown-item">Incident Types</a>
-                            <div class="dropdown-divider"></div>
-                            {{-- onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();" --}}
-                            <a class="dropdown-item">
-                                Logout
+                            <a class="dropdown-item" href="{{ route('canvas.post.index') }}">
+                                {{ __('canvas::blog.nav.user.posts') }}
                             </a>
-                            <form id="logout-form" :action="'/logout'" 
-                                    method="POST" style="display: none;">
-                                <input type="hidden" name="_token" id="csrf-token" :value="csrf_token" />
+                            <a class="dropdown-item" href="{{ route('canvas.tag.index') }}">
+                                {{ __('canvas::blog.nav.user.tags') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('canvas.topic.index') }}">
+                                {{ __('canvas::blog.nav.user.topics') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('canvas.index') }}">
+                                {{ __('canvas::blog.nav.user.stats') }}
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/#/admin" class="dropdown-item">
+                                Admin
+                            </a>
+                            <a href="/#/incidentTypes" class="dropdown-item">
+                                Incident Types
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                {{ __('canvas::blog.nav.user.logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
                             </form>
                         </ul>
                     </div>
-                    <li v-else class="nav-item">
+                    @else
+                    <li class="nav-item">
                         <a class="nav-link" href="/login">
                             <i class="fa fa-user-circle-o"></i>
                             Login
                         </a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
