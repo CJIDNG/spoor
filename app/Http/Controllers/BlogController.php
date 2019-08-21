@@ -7,6 +7,7 @@ use Canvas\Post;
 use Canvas\Topic;
 use Illuminate\View\View;
 use Canvas\Events\PostViewed;
+use Auth;
 
 class BlogController extends Controller
 {
@@ -21,6 +22,7 @@ class BlogController extends Controller
             'posts'  => Post::published()->orderByDesc('published_at')->simplePaginate(10),
             'topics' => Topic::all(['name', 'slug']),
             'tags'   => Tag::all(['name', 'slug']),
+            'user' => Auth::user()
         ];
 
         return view('blog.index', compact('data'));
@@ -71,6 +73,7 @@ class BlogController extends Controller
                 'next'   => $next,
                 'random' => $random,
                 'topic'  => $post->topic->first() ?? null,
+                'user' => Auth::user()
             ];
 
             event(new PostViewed($post));
