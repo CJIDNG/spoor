@@ -16,10 +16,9 @@
                   <div v-for="(post, index) in featured_posts" :key="index" 
                     class="carousel-item" v-bind:class="{ active: index === 0 }">
                     <img class="d-block img-fluid" :src="post.featured_image" alt="First slide">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption mb-5 mr-auto ml-auto">
                       <p>
-                        {{ post.title }}&nbsp;
-                        <a :href="'/blog/'+post.slug" class="btn btn-info btn-sm">Read Story</a>
+                        <a :href="'/blog/'+post.slug" class="carousel-caption btn btn-info btn-sm">Read Story</a>
                       </p>
                     </div>
                   </div>

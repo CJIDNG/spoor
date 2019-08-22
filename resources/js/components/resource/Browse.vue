@@ -22,21 +22,31 @@
       </div>
 
       <div class="section">
-        <h3 class="title text-center">
-          Resources
-        </h3>
+        <div class="info">
+          <div class="icon icon-primary">
+            <i class="fa fa-file-text"></i>
+          </div>
+          <div class="description">
+            <h4 class="info-title"> Resources </h4>
+            <p>
+              Spend your time generating new ideas. 
+              You don't have to think of implementing anymore.
+            </p>
+          </div>
+        </div>
         <div class="container">
           <action-loader
             class="text-center"
             :loading="resourcesLoadStatus == 1"
             :color="'#4caf50'"
           ></action-loader>
-          <table role="table" id="types-table" class="table table-bordered">
+          <table role="table" id="types-table" class="table table-rounded">
             <thead role="group">
               <tr>
                 <th role="columnheader">Id</th>
                 <th role="columnheader">Name</th>
                 <th role="columnheader">File Format</th>
+                <th role="columnheader">Date Published</th>
                 <th role="columnheader">Action</th>
               </tr>
             </thead>
@@ -55,6 +65,9 @@
                 <td role="cell">
                   {{ resource.extension }}
                 </td>
+                <td role="cell">
+                  {{ resource.created_at }}
+                </td>
                 <td class="td-actions">
                   <a
                     :href="'/storage/' + resource.url"
@@ -63,6 +76,7 @@
                     download
                   >
                     <i class="fa fa-download"></i>
+                    download
                   </a>
                   <button
                     v-if="userLoadStatus == 2 && user != {}"
@@ -72,6 +86,7 @@
                     class="btn btn-danger btn-sm btn-round btn-icon"
                   >
                     <i class="fa fa-times"></i>
+                    delete
                   </button>
                 </td>
               </tr>
