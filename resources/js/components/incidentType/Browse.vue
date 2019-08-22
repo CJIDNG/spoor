@@ -32,7 +32,7 @@
 						:color="'#4caf50'"></action-loader>
 					
 					<table role="table" id="types-table" 
-						class="table table-bordered">
+						class="table table table-rounded">
 						<thead role="group">
 							<tr>
 								<th role="columnheader">Id</th>
