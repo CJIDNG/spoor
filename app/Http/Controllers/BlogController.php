@@ -12,6 +12,15 @@ use Auth;
 class BlogController extends Controller
 {
     /**
+     * return posts
+     */
+    public function getPosts($limit) {
+        $posts = Post::published()->orderByDesc('published_at')->paginate($limit);
+
+        return $posts;
+    }
+
+    /**
      * Show the blog homepage with a paginated list of results.
      *
      * @return View

@@ -40,6 +40,7 @@ import { state } from './modules/state';
 import { localGovernment } from './modules/localGovernment';
 import { resource } from './modules/resource';
 import { newsletter } from './modules/newsletter';
+import { post } from './modules/post';
 
 /*
 Exports our data store.
@@ -55,7 +56,8 @@ export default new Vuex.Store({
         state,
         localGovernment,
         resource,
-        newsletter
+        newsletter,
+        post
     },
     plugins: [
         createPersistedState()

@@ -207,6 +207,14 @@ Route::group(['prefix'=> 'v1'], function() {
     );
 
     /**
+     * Post Routes
+     */
+    Route::get(
+        '/posts/limit/{limit}', 
+        'BlogController@getPosts'
+    );
+
+    /**
      * Mail Routes
      */
     Route::group(['prefix' => 'mail'], function() {

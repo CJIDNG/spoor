@@ -21,7 +21,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center title">
-                    <h2>Members</h2>
+                    <h2>Team</h2>
                 </div>
             </div>
             <i v-show="membersLoadStatus == 1" class="now-ui-icons loader_refresh spin"></i>
@@ -68,14 +68,14 @@
                     <button v-bind:class="[{disabled: !pagination.prev_page_url}]" 
                             @click="loadMembers(pagination.prev_page_url)" 
                             class="btn btn-link btn-default btn-move-left btn-sm"> 
-                        <i class="fa fa-angle-left"></i> Older members
+                        <i class="fa fa-angle-left"></i> Older
                     </button>
                 </div>
                 <div class="pull-right">
                     <button v-bind:class="[{disabled: !pagination.next_page_url}]" 
                             @click="loadMembers(pagination.next_page_url)" 
                             class="btn btn-link btn-default btn-move-right btn-sm">
-                        Newer members <i class="fa fa-angle-right"></i>
+                        Newer <i class="fa fa-angle-right"></i>
                     </button>
                 </div>
                 </div>
