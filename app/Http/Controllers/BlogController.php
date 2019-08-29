@@ -111,6 +111,7 @@ class BlogController extends Controller
                 'posts'  => Post::whereHas('tags', function ($query) use ($slug) {
                     $query->where('slug', $slug);
                 })->published()->orderByDesc('published_at')->simplePaginate(10),
+                'user' => Auth::user()
             ];
 
             return view('blog.index', compact('data'));
@@ -137,6 +138,7 @@ class BlogController extends Controller
                 'posts'  => Post::whereHas('topic', function ($query) use ($slug) {
                     $query->where('slug', $slug);
                 })->published()->orderByDesc('published_at')->simplePaginate(10),
+                'user' => Auth::user()
             ];
 
             return view('blog.index', compact('data'));
