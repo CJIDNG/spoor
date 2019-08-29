@@ -25,14 +25,12 @@
     </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    {{-- Replace this code with your own tracking code from google analytics --}}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145997622-1"></script>
+    <script async src=“https://www.googletagmanager.com/gtag/js?id=UA-146179130-1“></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-145997622-1');
+    gtag(‘js’, new Date());
+    gtag(‘config’, ‘UA-146179130-1’);
     </script>
 
 
