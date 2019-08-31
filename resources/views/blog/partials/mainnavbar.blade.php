@@ -8,7 +8,9 @@
                     <span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a style="color: white" href="/" class="navbar-brand">Spoor</a>
+                <a style="color: white" href="/" class="navbar-brand">
+                    <img height="50" src="/img/spoorlogo_14.png" alt="" srcset="">
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-menu" >
                 <ul class="navbar-nav ml-auto">

@@ -393,12 +393,17 @@
 				this.incident.title = '';
 				this.incident.death_count = null;
 				this.incident.injured_count = null;
+				this.incident.victim = '';
+				this.incident.affiliation = '';
+				this.incident.assailant = '';
                 this.incident.incident_type_id = '';
                 this.incident.location_id = '';
                 this.incident.location_type = '';
                 this.description_editor.setText('');
 				this.location_type = '';
 				this.incident.incident_date = '';
+				this.state_slct = null;
+				this.lg_slct = null;
 
                 this.validations = {
                     title: {
