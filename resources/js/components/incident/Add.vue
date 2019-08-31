@@ -77,6 +77,32 @@
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="">
+											Victim
+										</label>
+										<input type="text" class="form-control" v-model="incident.victim" />
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="">
+											Affiliation
+										</label>
+										<input type="text" class="form-control" v-model="incident.affiliation" />
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="">
+											Assailant
+										</label>
+										<input type="text" class="form-control" v-model="incident.assailant" />
+									</div>
+								</div>
+							</div>
 							<div class="form-group">
 								<label for="">
 									Location
@@ -180,6 +206,9 @@
 					description: '',
 					death_count: 0,
 					injured_count: 0,
+					victim: '',
+					affiliation: '',
+					assailant: '',
                     incident_type_id: '',
                     location_id: '',
 					location_type: '',

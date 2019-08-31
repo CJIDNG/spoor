@@ -54,6 +54,9 @@ class IncidentController extends Controller
         $incident->description = $request->input('description');
         $incident->death_count = $request->input('death_count');
         $incident->injured_count = $request->input('injured_count');
+        $incident->victim = $request->input('victim');
+        $incident->affiliation = $request->input('affiliation');
+        $incident->assailant = $request->input('assailant');
         $incident->incident_type_id = $request->input('incident_type_id');
         $incident->location_id = $request->input('location_id');
         $incident->location_type = $request->input('location_type');
@@ -92,6 +95,9 @@ class IncidentController extends Controller
         $incident->description = $request->input('description');
         $incident->death_count = $request->input('death_count');
         $incident->injured_count = $request->input('injured_count');
+        $incident->victim = $request->input('victim');
+        $incident->affiliation = $request->input('affiliation');
+        $incident->assailant = $request->input('assailant');
         $incident->incident_type_id = $request->input('incident_type_id');
         $incident->location_id = $request->input('location_id');
         $incident->location_type = $request->input('location_type');

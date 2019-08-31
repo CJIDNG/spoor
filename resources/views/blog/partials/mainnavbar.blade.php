@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-danger">
+<nav class="navbar navbar-expand-lg" style="background-color: #000000 !important;color: #ffffff">
         <div class="container">
             <div class="navbar-translate">
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" 
@@ -8,22 +8,22 @@
                     <span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="/" class="navbar-brand">Spoor</a>
+                <a style="color: white" href="/" class="navbar-brand">Spoor</a>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-menu">
+            <div class="collapse navbar-collapse" id="navbar-menu" >
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="/blog" class="nav-link">
+                        <a style="color: white" href="/blog" class="nav-link">
                             <i class="fa fa-th"></i>
                             Blog
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/#/incidents" class="nav-link"><i class="fa fa-map-marker"></i>
+                        <a style="color: white" href="/#/incidents" class="nav-link"><i class="fa fa-map-marker"></i>
                             Incidents</a>                         
                     </li>
                     <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
+                        <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
                             <i class="fa fa-file-text"></i>
@@ -35,7 +35,7 @@
                         </ul>
                     </div>
                     <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
+                        <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
                             <i class="fa fa-exclamation-triangle"></i>
@@ -47,19 +47,19 @@
                         </ul>
                     </div>
                     <li class="nav-item">
-                        <a href="/#/member" class="nav-link"><i class="fa fa-users"></i>
+                        <a style="color: white" href="/#/member" class="nav-link"><i class="fa fa-users"></i>
                             Team
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/#/contact" class="nav-link">
+                        <a style="color: white" href="/#/contact" class="nav-link">
                             <i class="fa fa-address-book"></i>
                             Contact
                         </a>
                     </li>
                     @if(Auth::check())
                     <div v-if="user.name" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
+                        <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
                             <i class="fa fa-user-circle-o"></i>
@@ -98,7 +98,7 @@
                     </div>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">
+                        <a style="color: white" class="nav-link" href="/login">
                             <i class="fa fa-user-circle-o"></i>
                             Login
                         </a>

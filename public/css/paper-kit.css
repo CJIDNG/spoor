@@ -3175,6 +3175,10 @@ input[type="file"]>input[type="button"]::-moz-focus-inner {
   background-color: #f7765f !important;
 }
 
+.bg-black {
+  background-color: #000000 !important;
+}
+
 .wrapper {
   -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);

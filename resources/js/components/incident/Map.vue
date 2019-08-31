@@ -41,6 +41,11 @@
                         </button>
 					</span>
 					<div class="clearfix"></div>
+					<div>
+						<span class="badge badge-info">Victim: {{ incident.victim }}</span>
+						<span class="badge badge-info">Affiliation: {{ incident.affiliation }}</span>
+						<span class="badge badge-info">Assailant: {{ incident.assailant }}</span>
+					</div>
 					<p v-html="incident.description" class="card-description"></p><br>
 					<column-chart :data="{'Death Count': incident.death_count, 'Injured Count': incident.injured_count}"></column-chart><br>
 					<button @click="closeInfoWindow" class="btn btn-success btn-sm">
