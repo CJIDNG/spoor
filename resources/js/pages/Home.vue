@@ -354,6 +354,8 @@ export default {
           message: this.newsletterEmail + " subscribed Successfully",
           type: "success"
         });
+
+        this.newsletterEmail = "";
       } else if (val == 3 || this.subscribeNewsletterResponse.success == 0) {
         this.$message({
           title: "Warning",
