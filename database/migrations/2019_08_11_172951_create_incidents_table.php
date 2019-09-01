@@ -19,9 +19,13 @@ class CreateIncidentsTable extends Migration
             $table->text('description');
             $table->bigInteger('death_count')->nullable();
             $table->bigInteger('injured_count')->nullable();
+            $table->string('victim')->nullable();
+            $table->string('affiliation')->nullable;
+            $table->string('assailant')->nullable();
             $table->unsignedInteger('incident_type_id');
             $table->unsignedInteger('location_id')->nullable();
             $table->string('location_type');
+            $table->date('incident_date');
             $table->timestamps();
 
             $table->engine = 'InnoDB';
