@@ -10,8 +10,8 @@ switch( process.env.NODE_ENV ) {
         url = 'http://127.0.0.1:8000';
     break;
     case 'production':
-        api_url = 'http://beta.spoorafrica.org/api/v1';
-        url = 'http://beta.spoorafrica.org';
+        api_url = 'http://spoorafrica.org/api/v1';
+        url = 'http://spoorafrica.org';
     break;
 }
 
