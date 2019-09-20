@@ -14,12 +14,20 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-menu" >
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a style="color: white" href="/blog" class="nav-link">
+                    <div class="nav-item dropdown">
+                        <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownIMenuButton" 
+                            href="#pk" role="button" aria-haspopup="true" 
+                            aria-expanded="false">
                             <i class="fa fa-th"></i>
-                            Blog
+                            Research
                         </a>
-                    </li>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownIMenuButton">
+                            <!--<li class="dropdown-header">Dropdown header</li>-->
+                            <a class="dropdown-item" href="/blog">
+                                Investigations
+                            </a>
+                        </ul>
+                    </div>
                     <li class="nav-item">
                         <a style="color: white" href="/#/incidents" class="nav-link"><i class="fa fa-map-marker"></i>
                             Incidents</a>                         

@@ -3,7 +3,7 @@
 
 <template>
   <div class="wrapper">
-    <div class="page-header" style="background-image: url('/img/pattern.jpg')">
+    <div class="page-header" style="background-image: url('/img/spoor_bg_2.jpg')">
         <div class="filter"></div>
         <div class="content-center">
           <div class="col-md-8 ml-auto mr-auto">
