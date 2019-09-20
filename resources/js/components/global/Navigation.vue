@@ -12,7 +12,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <router-link class="navbar-brand" to="/">
-                    <img height="50" src="/img/spoorlogo_14.png" alt="" srcset="">
+                    <img height="50" src="/img/spoor_white.png" alt="" srcset="">
                 </router-link>
             </div>
             <div class="collapse navbar-collapse" id="navbar-menu">

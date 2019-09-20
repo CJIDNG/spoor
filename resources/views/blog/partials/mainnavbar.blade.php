@@ -9,7 +9,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a style="color: white" href="/" class="navbar-brand">
-                    <img height="50" src="/img/spoorlogo_14.png" alt="" srcset="">
+                    <img height="50" src="/img/spoor_white.png" alt="" srcset="">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-menu" >

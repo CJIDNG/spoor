@@ -28,10 +28,7 @@
           </div>
           <div class="description">
             <h4 class="info-title"> Resources </h4>
-            <p>
-              Spend your time generating new ideas. 
-              You don't have to think of implementing anymore.
-            </p>
+            <p></p>
           </div>
         </div>
         <div class="container">
