@@ -84,10 +84,16 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="title">Let's talk product</h2>
-            <h5>This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
+            <h2 class="title">About Spoor</h2>
+            <h5>
+              Spoor is an initiative of Premium Times Centre for Investigative 
+              Journalism. This platform was created to dive into the security 
+              problems in Nigeria, Chad, Niger, and Cameroon. The first phase 
+              of this project is to focus on the decade long insurgency in the 
+              North Eastern part of Nigeria that also affects the Lake Chad Countries.
+            </h5>
             <br>
-            <a href="#paper-kit" class="btn btn-danger btn-fill btn-round">See Details</a>
+            <!--<a href="#paper-kit" class="btn btn-danger btn-fill btn-round">See Details</a>-->
           </div>
         </div>
         <br>
@@ -99,9 +105,11 @@
                 <i class="nc-icon nc-palette"></i>
               </div>
               <div class="description">
-                <h4 class="info-title">Beautiful Gallery</h4>
-                <p class="description">Spend your time generating new ideas. You don't have to think of implementing.</p>
-                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                <h4 class="info-title">Facts and Figures</h4>
+                <p class="description">
+                  presentation of precise details of attacks, incidences and events openly and honestly.
+                </p>
+                
               </div>
             </div>
           </div>
@@ -111,9 +119,9 @@
                 <i class="nc-icon nc-bulb-63"></i>
               </div>
               <div class="description">
-                <h4 class="info-title">New Ideas</h4>
-                <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient.</p>
-                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                <h4 class="info-title">Policy Briefs</h4>
+                <p>concise summary of issues, the options to deal with them, and recommendations.</p>
+                
               </div>
             </div>
           </div>
@@ -123,21 +131,21 @@
                 <i class="nc-icon nc-chart-bar-32"></i>
               </div>
               <div class="description">
-                <h4 class="info-title">Statistics</h4>
-                <p>Choose from a veriety of many colors resembling sugar paper pastels.</p>
-                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                <h4 class="info-title">Insights</h4>
+                <p>provision of insight and unbiased analysis of the insurgency using evidence based research</p>
+                
               </div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="info">
               <div class="icon icon-danger">
-                <i class="nc-icon nc-sun-fog-29"></i>
+                <i class="fa fa-map"></i>
               </div>
               <div class="description">
-                <h4 class="info-title">Delightful design</h4>
-                <p>Find unique and handmade delightful designs related items directly from our sellers.</p>
-                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+                <h4 class="info-title">Incidents Map</h4>
+                <p>browse through an array of incidents on a map with extensive details of how they happened</p>
+                
               </div>
             </div>
           </div>
@@ -151,7 +159,10 @@
         <div class="container">
           <div class="row">
             <div class="ml-auto mr-auto">
-              <h2 class="title text-center">Who We Are</h2>
+              <h2 class="title text-center">
+                Who We Are <br>
+                <small>We are a synergy of the following</small>
+              </h2>
             </div>
           </div>
           <div class="row">
@@ -160,11 +171,11 @@
                 <div class="icon">
                   <i class="nc-icon nc-atom" aria-hidden="true"></i>
                 </div>
-                <h4 class="title">For Developers</h4>
+                <h4 class="title">Media Organisations</h4>
                 <p>
-                  While everyone technically has the feature now, that doesn’t
-                  mean you’ll see it all the time. But in this case, the feature
-                  wasn’t just randomly A/B tested.
+                  Entities engaged in disseminating information to the general public 
+                  through a newspaper, magazine, other publication, radio, television, 
+                  cable television, or other medium of mass communication.
                 </p>
               </div>
             </div>
@@ -173,11 +184,9 @@
                 <div class="icon">
                   <i class="nc-icon nc-ruler-pencil" aria-hidden="true"></i>
                 </div>
-                <h4 class="title">For Designers</h4>
+                <h4 class="title">CSOs</h4>
                 <p>
-                  Loveflutter has actually been around for a while, pivoting
-                  from matches based on shared interests (innovative!) to now
-                  focus on analyzing.
+                  Non for profit organisations
                 </p>
               </div>
             </div>
@@ -188,24 +197,21 @@
                 <div class="icon">
                   <i class="nc-icon nc-paper" aria-hidden="true"></i>
                 </div>
-                <h4 class="title">Example Pages Included</h4>
+                <h4 class="title">Security Agencies</h4>
                 <p>
-                  As for the user backlash, it comes to the challenges faces in
-                  building features to aid newcomers, which can impact its
-                  growth and bottom line.
+                  Governmental organisation which conducts intelligence activities for the 
+                  internal security of a nation.
                 </p>
               </div>
             </div>
             <div class="col-sm-5 mr-auto">
               <div class="info">
                 <div class="icon">
-                  <i class="nc-icon nc-time-alarm" aria-hidden="true"></i>
+                  <i class="fa fa-users" aria-hidden="true"></i>
                 </div>
-                <h4 class="title">Save Time</h4>
+                <h4 class="title">Spoor Team</h4>
                 <p>
-                  The feature itself had been developed via experimental
-                  account, where it had tested how to better personalize its
-                  service to end users.
+                  PTCIJ, HumAngle Media Limited and Consultants.
                 </p>
               </div>
             </div>
