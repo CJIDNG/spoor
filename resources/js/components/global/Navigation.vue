@@ -27,7 +27,16 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownIMenuButton">
                             <!--<li class="dropdown-header">Dropdown header</li>-->
                             <a class="dropdown-item" href="/blog">
-                                Investigations
+                                News/Investigations
+                            </a>
+                            <a class="dropdown-item" href="/blog">
+                                Quaterly Reports
+                            </a>
+                            <a class="dropdown-item" href="/blog">
+                                Analysis
+                            </a>
+                            <a class="dropdown-item" href="/blog">
+                                Policy Brief
                             </a>
                         </ul>
                     </div>
@@ -37,7 +46,7 @@
                             Incidents
                         </router-link>
                     </li>
-                    <div class="nav-item dropdown">
+                    <!-- <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
@@ -45,13 +54,12 @@
                             Resources
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <!--<li class="dropdown-header">Dropdown header</li>-->
                             <router-link class="dropdown-item" to="/resources">
                                 Downloads
                             </router-link>
                         </ul>
-                    </div>
-                    <div class="nav-item dropdown">
+                    </div> -->
+                    <!-- <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" 
                             href="#pk" role="button" aria-haspopup="true" 
                             aria-expanded="false">
@@ -59,12 +67,11 @@
                             Get Involved
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <!--<li class="dropdown-header">Dropdown header</li>-->
                             <router-link class="dropdown-item" to="/be-a-member">
                                 Be a Member
                             </router-link>
                         </ul>
-                    </div>
+                    </div> -->
                     <li class="nav-item">
                         <router-link class="nav-link" to="/member">
                             <i class="fa fa-users"></i>

@@ -153,7 +153,7 @@
       </div>
     </div>
 
-      <div
+      <!-- <div
         class="features-5 section-image"
         style="background-image: url('/img/spoor_bg_1.jpg')">
         <div class="container">
@@ -217,7 +217,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
       <div class="subscribe-line subscribe-line-black">
